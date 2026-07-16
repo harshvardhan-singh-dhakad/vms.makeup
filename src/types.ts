@@ -5,6 +5,7 @@ export interface ServiceItem {
   description?: string;
   price?: string; // "Price on request via WhatsApp" or specific
   isPremium?: boolean;
+  iconName?: string;
 }
 
 export interface ServiceCategory {

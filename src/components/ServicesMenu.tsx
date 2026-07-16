@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Sparkles, ShoppingBag, Send, Trash2, Check, ArrowRight, CheckSquare } from 'lucide-react';
+import { 
+  Search, Sparkles, ShoppingBag, Send, Trash2, Check, ArrowRight, CheckSquare,
+  Crown, Diamond, PartyPopper, Wand2, Scissors, Zap, Palette, Wind, Brush, Droplets, Smile, Circle, Droplet, Shield, Feather, Link, Flower2, Activity, Stethoscope, Star, Sun, Hand, Footprints, Flame, Layers, Eye, RotateCcw
+} from 'lucide-react';
 import { SERVICES_DATA, SALON_INFO } from '../data';
+
+const IconMap: Record<string, React.ElementType> = {
+  Crown, Diamond, PartyPopper, Wand2, Sparkles, Scissors, Zap, Palette, Wind, Brush, Droplets, Smile, Circle, Droplet, Shield, Feather, Link, Flower2, Activity, Stethoscope, Star, Sun, Hand, Footprints, Flame, Layers, Eye, Check, RotateCcw, Trash2
+};
 import { ServiceItem, ServiceCategory } from '../types';
 
 export default function ServicesMenu() {
@@ -140,6 +147,8 @@ export default function ServicesMenu() {
                 <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
                   {category.items.map((item) => {
                     const isSelected = cart.some(i => i.id === item.id);
+                    const ServiceIcon = item.iconName && IconMap[item.iconName] ? IconMap[item.iconName] : Sparkles;
+
                     return (
                       <div 
                         key={item.id} 
@@ -149,21 +158,33 @@ export default function ServicesMenu() {
                             : 'bg-brand-bg-primary hover:bg-brand-bg-secondary border-brand-secondary/10 hover:border-brand-secondary/25 hover:shadow-sm'
                         }`}
                       >
+                        {/* Background subtle watermark icon */}
+                        <div className="absolute -bottom-4 -right-4 opacity-[0.03] pointer-events-none transition-transform duration-500 group-hover:scale-110 z-0">
+                          <ServiceIcon size={120} strokeWidth={1} />
+                        </div>
+
                         {item.isPremium && (
-                          <div className="absolute top-0 right-0 bg-brand-gold text-brand-bg-primary text-[8px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide">
+                          <div className="absolute top-0 right-0 bg-brand-gold text-brand-bg-primary text-[8px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide z-10">
                             Signature Offer
                           </div>
                         )}
                         
-                        <div>
-                          <h4 className="font-serif text-base font-bold text-brand-primary flex items-center justify-between pr-8">
-                            {item.name}
-                          </h4>
-                          {item.description && (
-                            <p className="text-xs text-brand-text-muted font-sans mt-1.5 leading-relaxed">
-                              {item.description}
-                            </p>
-                          )}
+                        <div className="relative z-10">
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 h-8 w-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0 group-hover:bg-brand-primary group-hover:text-brand-bg-primary transition-colors">
+                              <ServiceIcon className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <h4 className="font-serif text-base font-bold text-brand-primary pr-8 leading-tight">
+                                {item.name}
+                              </h4>
+                              {item.description && (
+                                <p className="text-xs text-brand-text-muted font-sans mt-1.5 leading-relaxed">
+                                  {item.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
                         </div>
 
                         {/* Card bottom block */}
