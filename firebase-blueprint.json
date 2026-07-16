@@ -1,0 +1,23 @@
+{
+  "collections": {
+    "portfolio_gallery": {
+      "fields": {
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "timestamp"
+        }
+      }
+    }
+  }
+}

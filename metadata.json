@@ -1,0 +1,6 @@
+{
+  "name": "Vms Makeup Salon & Bridal Studio",
+  "description": "Premium luxury beauty salon and bridal studio in Indore & Ujjain, MP. Providing high-end hair, custom makeup, facials, nails, and custom bridal plans with our server-side AI beauty planner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Premium Golden Metallic Gradient -->
+    <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9A7B36" />
+      <stop offset="20%" stop-color="#EAC775" />
+      <stop offset="40%" stop-color="#BE9648" />
+      <stop offset="60%" stop-color="#FDF1A9" />
+      <stop offset="80%" stop-color="#C19E50" />
+      <stop offset="100%" stop-color="#8A6421" />
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap');
+      .serif-text {
+        font-family: 'Playfair Display', 'Didot', 'Bodoni MT', 'Times New Roman', serif;
+        fill: #111111;
+      }
+      .gold-stroke {
+        stroke: url(#gold-metallic);
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .gold-fill {
+        fill: url(#gold-metallic);
+      }
+    </style>
+  </defs>
+
+  <!-- Clean canvas background -->
+  <rect width="100%" height="100%" fill="#ffffff" rx="100" />
+
+  <g transform="translate(10, 10)">
+    <!-- Elegant Gold Background Sweeps & Swirls -->
+    <!-- Top-left to top-right delicate sweep -->
+    <path d="M 150 100 C 200 80, 280 80, 340 100" class="gold-stroke" stroke-width="2" opacity="0.8" />
+    
+    <!-- Left wrap-around curve -->
+    <path d="M 130 220 C 120 280, 150 330, 210 360 C 150 320, 125 250, 140 190" class="gold-fill" opacity="0.7" />
+
+    <!-- MONOGRAM LETTERING -->
+    
+    <!-- Letter V (Left) -->
+    <text x="80" y="300" class="serif-text" font-size="220" font-weight="600">V</text>
+
+    <!-- Letter M (Middle overlapping) -->
+    <text x="180" y="350" class="serif-text" font-size="180" font-weight="400" opacity="0.95">M</text>
+
+    <!-- Letter S (Right) -->
+    <text x="290" y="300" class="serif-text" font-size="240" font-weight="400">S</text>
+
+    <!-- Gold Accent Sweep crossing through V & M -->
+    <path d="M 170 370 C 220 320, 240 210, 340 80 C 240 180, 200 300, 170 370" class="gold-fill" />
+    
+    <!-- Fine Gold overlap line on M -->
+    <path d="M 175 195 C 220 200, 235 230, 260 290" class="gold-stroke" stroke-width="3" />
+
+    <!-- GENTLE FEMININE PROFILE OUTLINE (Hugging the S on the right) -->
+    <!-- Starting at forehead, nose, lips, chin, elegant neck sweep -->
+    <path d="M 353 145
+             C 360 148, 368 155, 365 170
+             C 368 174, 372 178, 374 182
+             C 375 185, 378 189, 378 191
+             C 373 194, 372 195, 370 196
+             C 374 200, 376 203, 376 206
+             C 374 209, 371 210, 368 211
+             C 371 213, 373 216, 371 221
+             C 369 225, 363 229, 359 231
+             C 353 234, 345 237, 340 245" 
+          class="gold-stroke" stroke-width="2.5" />
+
+    <!-- ELEGANT GOLD SPARKLES / STARS (Inside lower S curve) -->
+    <!-- Sparkle 1 (Large) -->
+    <path d="M 335 240 L 338 245 L 343 247 L 338 249 L 335 254 L 332 249 L 327 247 L 332 245 Z" class="gold-fill" />
+    <!-- Sparkle 2 (Medium) -->
+    <path d="M 350 260 L 351.5 264 L 355.5 265.5 L 351.5 267 L 350 271 L 348.5 267 L 344.5 265.5 L 348.5 264 Z" class="gold-fill" />
+    <!-- Sparkle 3 (Small) -->
+    <path d="M 338 275 L 339 278 L 342 279 L 339 280 L 338 283 L 337 280 L 334 279 L 337 278 Z" class="gold-fill" />
+  </g>
+</svg>
