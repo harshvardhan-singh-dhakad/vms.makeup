@@ -5,6 +5,8 @@ import galleryImg3 from './assets/images/regenerated_image_1784134587652.jpg';
 import galleryImg4 from './assets/images/regenerated_image_1784136688341.jpg';
 import galleryImg5 from './assets/images/regenerated_image_1784135367248.jpg';
 import celestialGownImg from './assets/images/celestial_evening_gown.jpg';
+import silverCoinBraidImg from './assets/images/traditional_silver_coin_braid.jpg';
+import crimsonEmeraldGlowImg from './assets/images/royal_crimson_emerald_glow.jpg';
 
 import categoryMakeupImg from './assets/images/category_makeup.jpg';
 import categoryHairStylingImg from './assets/images/category_hair_styling.jpg';
@@ -232,13 +234,13 @@ export const GALLERY_IMAGES = [
   {
     title: "Royal Crimson Emerald Bridal Glow",
     category: "makeup",
-    url: "https://image.pollinations.ai/prompt/Stunning-close-up-portrait-of-an-Indian-bride-smiling-and-looking-to-the-side-wearing-a-luxurious-royal-red-velvet-lehenga-with-heavy-gold-and-silver-embroidery-exquisite-emerald-green-and-diamond-choker-necklace-with-matching-heavy-earrings-ornate-gold-nath-red-bridal-veil-wooden-panel-background-photorealistic-professional-DSLR-fashion-portrait?width=800&height=1000&nologo=true",
+    url: crimsonEmeraldGlowImg,
     description: "Classic crimson bridal makeup look with an intricate gold-threaded lehenga, matched with a luxurious green emerald choker necklace, soft lip colors, and side-profile warm smile."
   },
   {
     title: "Traditional Silver Coin Braided Hair",
     category: "hair",
-    url: "https://image.pollinations.ai/prompt/Back-view-of-a-woman-long-thick-black-hair-plait-braid-styled-for-an-Indian-bride-decorated-with-traditional-circular-silver-coin-jewelry-ornaments-called-Chotli-side-hair-chains-and-decorative-silver-jhumka-accents-cream-white-dress-rich-wooden-panel-door-background-photorealistic-professional-bridal-hair-styling-portfolio?width=800&height=1000&nologo=true",
+    url: silverCoinBraidImg,
     description: "Exquisite back profile of structured dark braided hair detailed with heavy circular silver coin-shaped chotli ornaments, delicate hanging mini chains, and mini jhumka accessories."
   }
 ];

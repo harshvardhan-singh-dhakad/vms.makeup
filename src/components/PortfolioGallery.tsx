@@ -153,6 +153,19 @@ export default function PortfolioGallery() {
     }
   }, []);
 
+  // Lock background scroll when an image is selected to prevent losing scroll position
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedImage]);
+
   const allImages = [
     ...dynamicImages,
     ...GALLERY_IMAGES.map(img => ({ ...img, category: img.category as any }))
