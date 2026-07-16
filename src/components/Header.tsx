@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Sparkles, MessageCircle } from 'lucide-react';
 import { SALON_INFO } from '../data';
-import logoWebp from '../assets/images/regenerated_image_1783878962342.webp';
+import logoWebp from '../assets/images/vms.logo.min.webp';
 
 interface HeaderProps {
   activeSection: string;
