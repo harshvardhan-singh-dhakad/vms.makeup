@@ -7,6 +7,9 @@ import galleryImg5 from './assets/images/regenerated_image_1784135367248.jpg';
 import celestialGownImg from './assets/images/celestial_evening_gown.jpg';
 import silverCoinBraidImg from './assets/images/traditional_silver_coin_braid.jpg';
 import crimsonEmeraldGlowImg from './assets/images/royal_crimson_emerald_glow.jpg';
+import ivoryEleganceImg from './assets/images/ivory_elegance_bride.jpg';
+import aestheticSideGlanceImg from './assets/images/aesthetic_side_glance.jpg';
+import traditionalImperialBraidImg from './assets/images/traditional_imperial_braid.jpg';
 
 import categoryMakeupImg from './assets/images/category_makeup.jpg';
 import categoryHairStylingImg from './assets/images/category_hair_styling.jpg';
@@ -202,16 +205,16 @@ export const GALLERY_IMAGES = [
     description: "Artistic nude gel overlay adorned with delicate hand-crafted 3D white flowers, gold-leaf vines, and hand-placed premium rhinestones with checkered sleeves in background."
   },
   {
-    title: "Classic Magenta Bridal Glow",
+    title: "Aesthetic Side Glance",
     category: "makeup",
-    url: galleryImg4,
-    description: "Exquisite bridal glow featuring a deep magenta-crimson lehenga, radiant skin prep, a heavy silver choker necklace with green emerald beads, and gold eyeshadow accents."
+    url: aestheticSideGlanceImg,
+    description: "Elegant side-profile shot presenting sophisticated floral hair bun styling, rosy gold cheeks, and a dainty classic bridal nose ring."
   },
   {
-    title: "Rajputana Ivory Royal Glow",
+    title: "Ivory Elegance Bride",
     category: "makeup",
-    url: galleryImg5,
-    description: "A breathtaking traditional Rajputana makeup look featuring serene ivory-white ethnic wear, pristine base prep, elegant gold contours, and a heavy emerald-accented choker necklace."
+    url: ivoryEleganceImg,
+    description: "A modern neutral-toned bridal look featuring an elegant ivory lehenga, soft glitter eyeshadow, subtle contouring, and royal kundan jewelry set against a rustic wooden backdrop."
   },
   {
     title: "Royal 3D Blossom Extension",
@@ -222,7 +225,7 @@ export const GALLERY_IMAGES = [
   {
     title: "Traditional Imperial Braid",
     category: "hair",
-    url: "https://image.pollinations.ai/prompt/Back-view-of-thick-long-black-hair-braid-styled-for-Indian-bride-decorated-with-traditional-circular-gold-jewelry-ornaments-and-bell-shaped-jhumka-accessories-cream-dress-wooden-door-background?width=800&height=1000&nologo=true",
+    url: traditionalImperialBraidImg,
     description: "Classic bridal long thick black braid embellished with elegant circular gold ornament chains, side decorative pins, and beautiful mini gold jhumkas."
   },
   {
