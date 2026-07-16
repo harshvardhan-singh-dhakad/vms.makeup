@@ -12,6 +12,7 @@ export interface ServiceCategory {
   id: string;
   name: string;
   iconName: string;
+  imageUrl?: string;
   description: string;
   items: ServiceItem[];
 }

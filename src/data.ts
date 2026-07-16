@@ -5,6 +5,15 @@ import galleryImg3 from './assets/images/regenerated_image_1784134587652.jpg';
 import galleryImg4 from './assets/images/regenerated_image_1784136688341.jpg';
 import galleryImg5 from './assets/images/regenerated_image_1784135367248.jpg';
 import celestialGownImg from './assets/images/celestial_evening_gown.jpg';
+
+import categoryMakeupImg from './assets/images/category_makeup.jpg';
+import categoryHairStylingImg from './assets/images/category_hair_styling.jpg';
+import categoryHairTextureImg from './assets/images/category_hair_texture.jpg';
+import categoryHairTreatmentsImg from './assets/images/category_hair_treatments.jpg';
+import categoryFacialsImg from './assets/images/category_facials.jpg';
+import categoryHandFeetImg from './assets/images/category_hand_feet.jpg';
+import categoryNailsImg from './assets/images/category_nails.jpg';
+
 export const SALON_INFO = {
   name: "Vms Makeup",
   tagline: "Your Neighbourhood Salon with a 5-Star Spa Experience",
@@ -26,6 +35,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "makeup",
     name: "Make Up",
     iconName: "Sparkles",
+    imageUrl: categoryMakeupImg,
     description: "Our hallmark service. Flawless, luminous artistry tailored for your high-intent events.",
     items: [
       {
@@ -79,6 +89,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "hair-styling",
     name: "Hair Styling",
     iconName: "Scissors",
+    imageUrl: categoryHairStylingImg,
     description: "Transformative styling, cuts, and coloring for everyday styling or majestic events.",
     items: [
       { id: "hs-1", name: "Hair Cut", category: "Hair Styling", description: "Precision layering, chic bobs, or split-end cleanup with relaxing hair wash.", price: "Price on request", iconName: "Scissors" },
@@ -96,6 +107,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "hair-texture",
     name: "Hair Texture",
     iconName: "Flame",
+    imageUrl: categoryHairTextureImg,
     description: "Premium texture alteration services to make your hair smooth, silky, and easy to manage.",
     items: [
       { id: "ht-1", name: "Keratin Treatment", category: "Hair Texture", description: "Rebuilds damaged protein structures, removing 90% frizz and adding brilliant shine.", price: "Price on request", isPremium: true, iconName: "Shield" },
@@ -108,6 +120,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "hair-treatments",
     name: "Hair Treatments",
     iconName: "HeartPulse",
+    imageUrl: categoryHairTreatmentsImg,
     description: "Targeted solutions to restore scalp health, stimulate growth, and lock in moisture.",
     items: [
       { id: "hm-1", name: "Spa Treatments", category: "Hair Treatments", description: "Deep conditioning steam spa tailored for oily, dry, or dandruff-prone scalps.", price: "Price on request", iconName: "Flower2" },
@@ -120,6 +133,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "facials",
     name: "Facials & Rituals",
     iconName: "Sparkle",
+    imageUrl: categoryFacialsImg,
     description: "Indulgent skin rituals designed for radiant bridal glow and deep cellular rejuvenation.",
     items: [
       { id: "fr-1", name: "Luxury Facials/Rituals", category: "Facials & Rituals", description: "Premium, multi-step facial utilizing imported botanical serums and anti-aging gold therapies.", price: "Price on request", isPremium: true, iconName: "Sparkles" },
@@ -133,6 +147,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "hand-feet",
     name: "Hand & Feet",
     iconName: "Hand",
+    imageUrl: categoryHandFeetImg,
     description: "Pamper your extremities with clean, nourishing skin-smoothing rituals.",
     items: [
       { id: "hf-1", name: "Spa Manicure", category: "Hand & Feet", description: "Luxury hands scrub, deep mask, massage, cuticle care, and gorgeous nail grooming.", price: "Price on request", iconName: "Hand" },
@@ -146,6 +161,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
     id: "nails",
     name: "Nail Services",
     iconName: "Feather",
+    imageUrl: categoryNailsImg,
     description: "Express your style with elite gel extensions, chrome finishes, and intricate nail art.",
     items: [
       { id: "ns-1", name: "Gel Extension", category: "Nail Services", description: "Long-lasting premium gel tips with customized length and shaping.", price: "Price on request", isPremium: true, iconName: "Layers" },

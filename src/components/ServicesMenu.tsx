@@ -78,7 +78,7 @@ export default function ServicesMenu() {
             Luxury Indulgences, Tailored For You
           </h2>
           <p className="font-sans text-sm sm:text-base text-brand-text-muted mt-4">
-            Select and add services to your personal **Beauty Consultation Cart** to instantly draft a custom appointment booking over WhatsApp.
+            Select and add services to your personal Beauty Consultation Cart to instantly draft a custom appointment booking over WhatsApp.
           </p>
         </div>
 
@@ -133,15 +133,38 @@ export default function ServicesMenu() {
               <div key={category.id} className="bg-brand-bg-secondary rounded-[24px] p-6 sm:p-8 border border-brand-secondary/15 shadow-sm">
                 
                 {/* Category Header */}
-                <div className="flex items-center space-x-3 mb-6 border-b border-brand-secondary/15 pb-4">
-                  <div className="h-10 w-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary">
-                    <Sparkles className="h-5 w-5 text-brand-gold" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">{category.name}</h3>
-                    <p className="text-[11px] text-brand-text-muted mt-0.5">{category.description}</p>
-                  </div>
-                </div>
+                {(() => {
+                  const CategoryIcon = category.iconName && IconMap[category.iconName] ? IconMap[category.iconName] : Sparkles;
+                  return category.imageUrl ? (
+                    <div className="w-full h-48 sm:h-64 rounded-xl overflow-hidden mb-8 relative border border-brand-secondary/10">
+                      <img 
+                        src={category.imageUrl} 
+                        alt={category.name} 
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-secondary via-brand-bg-secondary/40 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 flex items-end sm:items-center space-x-4">
+                        <div className="h-12 w-12 sm:h-14 sm:w-14 bg-brand-bg-primary rounded-xl flex items-center justify-center text-brand-primary shadow-xl shrink-0">
+                          <CategoryIcon className="h-6 w-6 sm:h-7 sm:w-7 text-brand-gold" />
+                        </div>
+                        <div className="pb-1 sm:pb-0 max-w-lg">
+                          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary drop-shadow-sm">{category.name}</h3>
+                          <p className="text-xs sm:text-sm text-brand-text-dark font-sans mt-1.5 drop-shadow-sm font-medium leading-relaxed">{category.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center space-x-3 mb-6 border-b border-brand-secondary/15 pb-4">
+                      <div className="h-10 w-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary shrink-0">
+                        <CategoryIcon className="h-5 w-5 text-brand-gold" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">{category.name}</h3>
+                        <p className="text-[11px] text-brand-text-muted mt-0.5">{category.description}</p>
+                      </div>
+                    </div>
+                  );
+                })()}
 
                 {/* Items Grid */}
                 <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
