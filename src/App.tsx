@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ServicesMenu from './components/ServicesMenu';
-import AIConsultant from './components/AIConsultant';
 import PortfolioGallery from './components/PortfolioGallery';
 import Reviews from './components/Reviews';
 import AboutAndStory from './components/AboutAndStory';
@@ -13,7 +12,6 @@ import { SALON_INFO } from './data';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [aiOpen, setAiOpen] = useState(false);
 
   // Simple scroll-spy to highlight active section in Header
   useEffect(() => {
@@ -45,14 +43,12 @@ export default function App() {
       <Header 
         activeSection={activeSection} 
         setActiveSection={setActiveSection}
-        onOpenConsultant={() => setAiOpen(true)}
       />
 
       {/* Main Sections */}
       <main>
         {/* Hero Section */}
         <Hero 
-          onOpenConsultant={() => setAiOpen(true)} 
           onExploreServices={() => {
             const element = document.getElementById('services');
             if (element) {
@@ -85,26 +81,8 @@ export default function App() {
       {/* Footer Contact Sheet */}
       <Footer />
 
-      {/* Immersive AI Beauty / Bridal Consultant Drawer */}
-      <AIConsultant 
-        isOpen={aiOpen} 
-        onClose={() => setAiOpen(false)} 
-      />
-
       {/* Floating Sticky CTA Buttons */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
-        {/* Floating AI Bubble */}
-        <button
-          id="floating-ai-consultant"
-          onClick={() => setAiOpen(true)}
-          className="bg-brand-primary hover:bg-brand-primary/95 text-brand-bg-primary p-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center border-2 border-brand-gold/40 group relative"
-          title="AI Bridal Assistant"
-        >
-          <Sparkles className="h-5.5 w-5.5 text-brand-gold fill-brand-gold/20 animate-pulse" />
-          <span className="absolute right-14 bg-brand-bg-primary text-brand-primary text-[10px] font-sans font-bold px-2.5 py-1 rounded-lg shadow-md border border-brand-secondary/20 scale-0 group-hover:scale-100 origin-right transition-all duration-200 whitespace-nowrap">
-            Ask AI Stylist
-          </span>
-        </button>
 
         {/* Floating WhatsApp Bubble */}
         <a
