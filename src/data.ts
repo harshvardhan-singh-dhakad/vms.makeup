@@ -4,7 +4,7 @@ import galleryImg2 from './assets/images/regenerated_image_1784134579911.jpg';
 import galleryImg3 from './assets/images/regenerated_image_1784134587652.jpg';
 import galleryImg4 from './assets/images/regenerated_image_1784136688341.jpg';
 import galleryImg5 from './assets/images/regenerated_image_1784135367248.jpg';
-
+import celestialGownImg from './assets/images/celestial_evening_gown.jpg';
 export const SALON_INFO = {
   name: "Vms Makeup",
   tagline: "Your Neighbourhood Salon with a 5-Star Spa Experience",
@@ -205,7 +205,7 @@ export const GALLERY_IMAGES = [
   {
     title: "Glamorous Celestial Evening Gown Look",
     category: "makeup",
-    url: "https://image.pollinations.ai/prompt/Close-up-photograph-of-a-smiling-young-Indian-woman-wearing-a-gorgeous-heavily-embroidered-sky-blue-teal-sleeveless-evening-gown-with-3D-floral-organza-shoulder-straps-and-waist-flower-appliques-delicate-gold-necklace-mehndi-on-hands-outdoor-night-party-backdrop-with-bubbles-and-warm-circular-bokeh-lights-photorealistic-premium-DSLR-photography?width=800&height=1000&nologo=true",
+    url: celestialGownImg,
     description: "Engagement and reception look featuring a sparkling sky-blue-teal gown with custom 3D floral accents, a refined gold chain, and mehndi-patterned hands under starry bubble lights."
   },
   {
