@@ -51,6 +51,15 @@ export default function ServicesMenu() {
     return `https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=${encodeURIComponent(intro)}`;
   };
 
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!SALON_INFO.whatsappBookingsActive) {
+      e.preventDefault();
+      if ((window as any).showBookingClosedModal) {
+        (window as any).showBookingClosedModal();
+      }
+    }
+  };
+
   // Filter items based on category and search query
   const filteredCategories = SERVICES_DATA.map(category => {
     const items = category.items.filter(item => 
@@ -301,6 +310,7 @@ export default function ServicesMenu() {
                   id="cart-whatsapp-submit-btn"
                   href={getWhatsAppLink()}
                   target="_blank"
+                  onClick={handleBookingClick}
                   rel="noreferrer"
                   className="flex items-center justify-center space-x-2 w-full bg-brand-primary text-brand-bg-primary py-3 rounded-xl font-sans text-xs font-bold shadow-md hover:bg-brand-primary/95 transition-all"
                 >

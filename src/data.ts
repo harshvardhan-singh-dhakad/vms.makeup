@@ -24,6 +24,7 @@ export const SALON_INFO = {
   tagline: "Your Neighbourhood Salon with a 5-Star Spa Experience",
   contactNumber: "", // Removed for now as requested
   whatsappNumber: "+919876543210", // Indore/Ujjain main contact
+  whatsappBookingsActive: false, // Temporarily disabled WhatsApp bookings
   address: "Ujjain",
   locationName: "Freegunj, Ujjain",
   hours: {

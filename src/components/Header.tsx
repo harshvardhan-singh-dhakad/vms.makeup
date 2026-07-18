@@ -52,6 +52,15 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
     }
   };
 
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!SALON_INFO.whatsappBookingsActive) {
+      e.preventDefault();
+      if ((window as any).showBookingClosedModal) {
+        (window as any).showBookingClosedModal();
+      }
+    }
+  };
+
   return (
     <header 
       id="main-header"
@@ -69,41 +78,29 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden bg-white border border-brand-purple/30 shadow-sm">
-              <img 
-                src={logoWebp} 
-                alt="VMS Logo" 
-                className="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-300" 
-                referrerPolicy="no-referrer"
-                onError={(e) => { e.currentTarget.src = 'https://placehold.co/100x100/ffffff/d4af37?text=VMS' }} 
-              />
-            </div>
-            <div className="ml-2 hidden sm:block">
-              <span className="font-serif text-2xl font-bold tracking-tight text-brand-primary">
-                {SALON_INFO.name}
-              </span>
-              <span className="block text-[9px] uppercase tracking-widest text-brand-secondary font-semibold">
-                Bridal & Beauty Studio
-              </span>
-            </div>
+            <img 
+              src={logoWebp} 
+              alt={`${SALON_INFO.name} Logo`} 
+              className="h-10 w-10 object-contain hover:rotate-6 transition-transform duration-300"
+            />
+            <span className="font-serif text-lg font-bold tracking-wider text-brand-primary group-hover:text-brand-secondary transition-colors uppercase">
+              {SALON_INFO.name}
+            </span>
           </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`font-sans text-sm font-medium tracking-wide transition-colors duration-200 relative py-1 ${
+                className={`font-serif text-sm lg:text-base px-3 py-2 rounded-full transition-all duration-300 tracking-wide ${
                   activeSection === item.id 
-                    ? 'text-brand-primary font-semibold' 
-                    : 'text-brand-text-muted hover:text-brand-primary'
+                    ? 'text-brand-primary font-bold' 
+                    : 'text-brand-text-dark hover:text-brand-primary'
                 }`}
               >
                 {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-primary rounded-full" />
-                )}
               </button>
             ))}
           </nav>
@@ -122,6 +119,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
               id="header-whatsapp-btn"
               href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup,%20I'd%20like%20to%20book%20an%20appointment%20or%20consult%20about%20my%20bridal%20look.`}
               target="_blank"
+              onClick={handleBookingClick}
               rel="noreferrer"
               className="flex items-center space-x-2 bg-brand-primary text-brand-bg-primary px-5 py-2 rounded-full font-sans text-xs font-bold shadow-md hover:bg-brand-primary/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-brand-purple/20"
             >
@@ -197,6 +195,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
             id="drawer-whatsapp-btn"
             href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup,%20I'd%20like%20to%20book%20an%20appointment%20or%20consult%20about%20my%20bridal%20look.`}
             target="_blank"
+            onClick={handleBookingClick}
             rel="noreferrer"
             className="flex items-center justify-center space-x-2 bg-brand-primary text-brand-bg-primary py-3 rounded-xl font-sans text-sm font-bold shadow-md w-full"
           >

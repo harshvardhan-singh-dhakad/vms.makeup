@@ -5,6 +5,15 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Heart, Sparkles, Navigation 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!SALON_INFO.whatsappBookingsActive) {
+      e.preventDefault();
+      if ((window as any).showBookingClosedModal) {
+        (window as any).showBookingClosedModal();
+      }
+    }
+  };
+
   return (
     <footer id="contact" className="bg-brand-primary text-brand-bg-primary pt-16 pb-8 relative overflow-hidden">
       {/* Decorative Gold Border Line */}
@@ -42,6 +51,7 @@ export default function Footer() {
                 id="footer-whatsapp-chat"
                 href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup,%20I'd%20like%20to%20book%20a%20bridal/makeup%20session%20at%20your%20salon.`}
                 target="_blank"
+                onClick={handleBookingClick}
                 rel="noreferrer"
                 className="inline-flex items-center space-x-2 bg-white text-brand-primary px-5 py-2.5 rounded-xl font-sans text-xs font-bold shadow-md hover:bg-brand-bg-secondary transition-all"
               >

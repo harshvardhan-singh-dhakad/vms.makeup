@@ -13,6 +13,15 @@ export default function Reviews() {
     setCurrentIndex((prev) => (prev === REVIEWS_DATA.length - 1 ? 0 : prev + 1));
   };
 
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!SALON_INFO.whatsappBookingsActive) {
+      e.preventDefault();
+      if ((window as any).showBookingClosedModal) {
+        (window as any).showBookingClosedModal();
+      }
+    }
+  };
+
   return (
     <section id="reviews" className="py-20 bg-brand-bg-primary relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-secondary/30 to-transparent" />
@@ -113,6 +122,7 @@ export default function Reviews() {
             id="write-google-review-btn"
             href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup!%20I'd%20love%20to%20provide%20feedback%20about%20my%20recent%20styling%20session.`}
             target="_blank"
+            onClick={handleBookingClick}
             rel="noreferrer"
             className="flex items-center space-x-1.5 bg-brand-primary/10 text-brand-primary border border-brand-primary/20 px-4 py-2 rounded-xl font-sans text-xs font-bold hover:bg-brand-primary hover:text-brand-bg-primary transition-all shrink-0"
           >

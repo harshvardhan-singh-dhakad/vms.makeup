@@ -151,6 +151,15 @@ export default function PortfolioGallery() {
     }
   };
 
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!SALON_INFO.whatsappBookingsActive) {
+      e.preventDefault();
+      if ((window as any).showBookingClosedModal) {
+        (window as any).showBookingClosedModal();
+      }
+    }
+  };
+
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError(null);
@@ -578,6 +587,7 @@ export default function PortfolioGallery() {
                       id="modal-whatsapp-booking"
                       href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup!%20I%20am%20looking%20at%20your%20portfolio%20and%20absolutely%20love%20the%20"${encodeURIComponent(selectedImage.title)}"%20look.%20I'd%20like%20to%20consult%20and%20book%20this.`}
                       target="_blank"
+                      onClick={handleBookingClick}
                       rel="noreferrer"
                       className="flex items-center justify-center space-x-2 w-full bg-brand-primary text-brand-bg-primary py-3 rounded-xl font-sans text-xs font-bold shadow-md hover:bg-brand-primary/95 transition-all"
                     >
