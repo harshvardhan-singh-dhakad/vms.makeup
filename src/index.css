@@ -6,13 +6,13 @@
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
   /* Custom Brand Color Variables */
-  --color-brand-bg-primary: #FFF8F3;
-  --color-brand-bg-secondary: #FDF6F0;
-  --color-brand-primary: #7A2E38;
-  --color-brand-secondary: #B76E79;
-  --color-brand-gold: #C9A227;
-  --color-brand-text-dark: #2B2420;
-  --color-brand-text-muted: #6B5B52;
+  --color-brand-bg-primary: #FFFFFF;
+  --color-brand-bg-secondary: #F9FAFB;
+  --color-brand-primary: #E0218A;
+  --color-brand-secondary: #F264B1;
+  --color-brand-gold: #D4AF37;
+  --color-brand-text-dark: #1F2937;
+  --color-brand-text-muted: #4B5563;
 }
 
 body {
