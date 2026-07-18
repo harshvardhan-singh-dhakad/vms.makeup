@@ -53,7 +53,7 @@ export default function Reviews() {
                   key={i} 
                   className={`h-5 w-5 ${
                     i < REVIEWS_DATA[currentIndex].rating 
-                      ? 'text-brand-gold fill-brand-gold' 
+                      ? 'text-brand-purple fill-brand-purple' 
                       : 'text-brand-secondary/20'
                   }`} 
                 />

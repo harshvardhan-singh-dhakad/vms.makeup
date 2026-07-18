@@ -69,7 +69,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden bg-white border border-brand-gold/30 shadow-sm">
+            <div className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden bg-white border border-brand-purple/30 shadow-sm">
               <img 
                 src={logoWebp} 
                 alt="VMS Logo" 
@@ -115,7 +115,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
               onClick={onOpenConsultant}
               className="flex items-center space-x-1 px-4 py-2 rounded-full border border-brand-primary/30 text-brand-primary font-sans text-xs font-semibold hover:bg-brand-primary/10 transition-colors"
             >
-              <Sparkles className="h-4.5 w-4.5 text-brand-gold fill-brand-gold/30" />
+              <Sparkles className="h-4.5 w-4.5 text-brand-purple fill-brand-purple/30" />
               <span>AI Bridal Consultant</span>
             </button>
             <a
@@ -123,7 +123,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
               href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup,%20I'd%20like%20to%20book%20an%20appointment%20or%20consult%20about%20my%20bridal%20look.`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center space-x-2 bg-brand-primary text-brand-bg-primary px-5 py-2 rounded-full font-sans text-xs font-bold shadow-md hover:bg-brand-primary/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-brand-gold/20"
+              className="flex items-center space-x-2 bg-brand-primary text-brand-bg-primary px-5 py-2 rounded-full font-sans text-xs font-bold shadow-md hover:bg-brand-primary/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-brand-purple/20"
             >
               <MessageCircle className="h-4 w-4" />
               <span>Book Appointment</span>
@@ -138,7 +138,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
               className="p-2 rounded-full bg-brand-primary/5 text-brand-primary border border-brand-primary/20"
               aria-label="AI Beauty Assistant"
             >
-              <Sparkles className="h-4.5 w-4.5 text-brand-gold fill-brand-gold/30 animate-pulse" />
+              <Sparkles className="h-4.5 w-4.5 text-brand-purple fill-brand-purple/30 animate-pulse" />
             </button>
             <button
               id="mobile-nav-toggle"
@@ -187,7 +187,7 @@ export default function Header({ activeSection, setActiveSection, onOpenConsulta
             }}
             className="flex items-center justify-center space-x-2 w-full py-3 mt-4 rounded-xl bg-brand-primary/5 text-brand-primary border border-brand-primary/30 font-sans text-sm font-semibold hover:bg-brand-primary/10 transition-colors"
           >
-            <Sparkles className="h-4.5 w-4.5 text-brand-gold fill-brand-gold/30" />
+            <Sparkles className="h-4.5 w-4.5 text-brand-purple fill-brand-purple/30" />
             <span>AI Bridal & Look Consultant</span>
           </button>
         </div>

@@ -339,7 +339,7 @@ export default function PortfolioGallery() {
                 <button
                   id="share-look-btn"
                   onClick={() => setIsUploadOpen(true)}
-                  className="flex items-center space-x-2 bg-brand-gold text-brand-bg-primary px-5 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shadow-md hover:shadow-brand-gold/20 hover:scale-[1.02] active:scale-[0.98] shrink-0"
+                  className="flex items-center space-x-2 bg-brand-purple text-brand-bg-primary px-5 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shadow-md hover:shadow-brand-purple/20 hover:scale-[1.02] active:scale-[0.98] shrink-0"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Upload Look</span>
@@ -361,14 +361,14 @@ export default function PortfolioGallery() {
                   className="flex items-center space-x-1.5 bg-brand-bg-primary text-brand-text-muted border border-brand-secondary/15 px-4 py-2.5 rounded-full font-sans text-xs font-semibold hover:text-brand-primary hover:border-brand-primary/30 transition-all duration-300 shrink-0"
                   title="Admin Access Login"
                 >
-                  <Lock className="h-3.5 w-3.5 text-brand-gold/80" />
+                  <Lock className="h-3.5 w-3.5 text-brand-purple/80" />
                   <span>Admin Access</span>
                 </button>
 
                 <button
                   id="share-look-btn"
                   onClick={() => setIsAdminLoginOpen(true)}
-                  className="flex items-center space-x-2 bg-brand-gold/90 text-brand-bg-primary px-5 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shadow-md hover:shadow-brand-gold/20 hover:scale-[1.02] active:scale-[0.98] shrink-0"
+                  className="flex items-center space-x-2 bg-brand-purple/90 text-brand-bg-primary px-5 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shadow-md hover:shadow-brand-purple/20 hover:scale-[1.02] active:scale-[0.98] shrink-0"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Upload Real Transformation</span>
@@ -408,7 +408,7 @@ export default function PortfolioGallery() {
                 {/* Badge for dynamically uploaded items */}
                 {img.id && (
                   <>
-                    <div className="absolute top-4 left-4 bg-brand-gold/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-[9px] font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
+                    <div className="absolute top-4 left-4 bg-brand-purple/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-[9px] font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
                       <Sparkles className="h-2.5 w-2.5" />
                       <span>Real Client</span>
                     </div>
@@ -428,7 +428,7 @@ export default function PortfolioGallery() {
                 <div className="absolute inset-0 bg-brand-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-left">
                   <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-start justify-between">
                     <div>
-                      <span className="text-[10px] uppercase font-sans tracking-widest text-brand-gold font-bold">
+                      <span className="text-[10px] uppercase font-sans tracking-widest text-brand-purple font-bold">
                         {img.category}
                       </span>
                       <h3 className="font-serif text-lg font-bold text-brand-bg-primary mt-1">
@@ -550,7 +550,7 @@ export default function PortfolioGallery() {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex items-center space-x-2">
-                    <div className="h-9 w-9 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold">
+                    <div className="h-9 w-9 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple">
                       <KeyRound className="h-5 w-5" />
                     </div>
                     <div>
@@ -594,7 +594,7 @@ export default function PortfolioGallery() {
                           setAdminUsername(e.target.value);
                           if (loginError) setLoginError(null);
                         }}
-                        className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl pl-10 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-gold font-sans transition-all"
+                        className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl pl-10 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-purple font-sans transition-all"
                         autoFocus
                       />
                     </div>
@@ -617,7 +617,7 @@ export default function PortfolioGallery() {
                           setAdminPasscode(e.target.value);
                           if (loginError) setLoginError(null);
                         }}
-                        className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl pl-10 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-gold font-sans transition-all"
+                        className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl pl-10 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-purple font-sans transition-all"
                       />
                     </div>
                     {loginError && (
@@ -664,7 +664,7 @@ export default function PortfolioGallery() {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <span className="text-[10px] font-bold text-brand-gold uppercase tracking-widest flex items-center gap-1 font-sans">
+                    <span className="text-[10px] font-bold text-brand-purple uppercase tracking-widest flex items-center gap-1 font-sans">
                       <Sparkles className="h-3 w-3" />
                       Showcase Transformation
                     </span>
@@ -695,7 +695,7 @@ export default function PortfolioGallery() {
                       value={uploadTitle}
                       onChange={(e) => setUploadTitle(e.target.value)}
                       disabled={isUploading || uploadSuccess}
-                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-gold font-sans transition-all"
+                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-purple font-sans transition-all"
                     />
                   </div>
 
@@ -708,7 +708,7 @@ export default function PortfolioGallery() {
                       value={uploadCategory}
                       onChange={(e) => setUploadCategory(e.target.value as any)}
                       disabled={isUploading || uploadSuccess}
-                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-gold font-sans transition-all"
+                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-purple font-sans transition-all"
                     >
                       <option value="makeup">Bridal & Party Make Up</option>
                       <option value="hair">Hair Texturing & Styles</option>
@@ -729,7 +729,7 @@ export default function PortfolioGallery() {
                       value={uploadDescription}
                       onChange={(e) => setUploadDescription(e.target.value)}
                       disabled={isUploading || uploadSuccess}
-                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-gold font-sans transition-all resize-none"
+                      className="w-full bg-brand-bg-secondary text-brand-text-dark border border-brand-secondary/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-brand-purple font-sans transition-all resize-none"
                     />
                   </div>
 
@@ -748,8 +748,8 @@ export default function PortfolioGallery() {
                         onClick={() => fileInputRef.current?.click()}
                         className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-all ${
                           isDragActive 
-                            ? 'border-brand-gold bg-brand-gold/5' 
-                            : 'border-brand-secondary/20 hover:border-brand-gold/50 hover:bg-brand-bg-secondary/40'
+                            ? 'border-brand-purple bg-brand-purple/5' 
+                            : 'border-brand-secondary/20 hover:border-brand-purple/50 hover:bg-brand-bg-secondary/40'
                         }`}
                       >
                         <input 
@@ -762,7 +762,7 @@ export default function PortfolioGallery() {
                         />
                         <Upload className="h-8 w-8 text-brand-secondary mx-auto mb-2.5 animate-bounce-subtle" />
                         <p className="text-[11px] font-bold text-brand-text-dark font-sans">
-                          Drag & drop image or <span className="text-brand-gold underline font-extrabold">browse</span>
+                          Drag & drop image or <span className="text-brand-purple underline font-extrabold">browse</span>
                         </p>
                         <p className="text-[9px] text-brand-text-muted mt-1 font-sans">
                           Supports PNG, JPG, JPEG, WEBP up to 8MB

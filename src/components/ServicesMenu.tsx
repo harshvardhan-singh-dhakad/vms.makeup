@@ -145,7 +145,7 @@ export default function ServicesMenu() {
                       <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-secondary via-brand-bg-secondary/40 to-transparent"></div>
                       <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 flex items-end sm:items-center space-x-4">
                         <div className="h-12 w-12 sm:h-14 sm:w-14 bg-brand-bg-primary rounded-xl flex items-center justify-center text-brand-primary shadow-xl shrink-0">
-                          <CategoryIcon className="h-6 w-6 sm:h-7 sm:w-7 text-brand-gold" />
+                          <CategoryIcon className="h-6 w-6 sm:h-7 sm:w-7 text-brand-purple" />
                         </div>
                         <div className="pb-1 sm:pb-0 max-w-lg">
                           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary drop-shadow-sm">{category.name}</h3>
@@ -156,7 +156,7 @@ export default function ServicesMenu() {
                   ) : (
                     <div className="flex items-center space-x-3 mb-6 border-b border-brand-secondary/15 pb-4">
                       <div className="h-10 w-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary shrink-0">
-                        <CategoryIcon className="h-5 w-5 text-brand-gold" />
+                        <CategoryIcon className="h-5 w-5 text-brand-purple" />
                       </div>
                       <div>
                         <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">{category.name}</h3>
@@ -187,7 +187,7 @@ export default function ServicesMenu() {
                         </div>
 
                         {item.isPremium && (
-                          <div className="absolute top-0 right-0 bg-brand-gold text-brand-bg-primary text-[8px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide z-10">
+                          <div className="absolute top-0 right-0 bg-brand-purple text-brand-bg-primary text-[8px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide z-10">
                             Signature Offer
                           </div>
                         )}

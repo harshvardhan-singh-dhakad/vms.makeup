@@ -33,7 +33,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
         {/* Mobile/Tablet Title (Only visible on small viewports so the screen is not empty before the Bento) */}
         <div className="lg:hidden text-center max-w-2xl mx-auto mb-8">
           <span className="inline-flex items-center space-x-1.5 bg-brand-primary/5 border border-brand-primary/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-primary mb-3">
-            <Sparkles className="h-3 w-3 text-brand-gold fill-brand-gold" />
+            <Sparkles className="h-3 w-3 text-brand-purple fill-brand-purple" />
             <span>Best Bridal & Makeup in Indore & Ujjain</span>
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary leading-tight">
@@ -63,7 +63,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
 
             {/* Interactive Badge & Content */}
             <div className="relative z-20 text-left">
-              <span className="inline-block px-3 py-1 bg-brand-gold text-white text-[9px] font-bold uppercase tracking-widest mb-3 rounded-sm border border-white/10 shadow-sm">
+              <span className="inline-block px-3 py-1 bg-brand-purple text-white text-[9px] font-bold uppercase tracking-widest mb-3 rounded-sm border border-white/10 shadow-sm">
                 Premium Spotlight
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-serif text-white leading-tight mb-3">
@@ -80,7 +80,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
                   href={`https://wa.me/${SALON_INFO.whatsappNumber.replace('+', '')}?text=Hi%20Vms%20Makeup,%20I'd%20like%20to%20consult%20and%20book%20a%20bridal/makeup%20session%20at%20your%20salon.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-3 bg-brand-gold text-white font-bold text-xs uppercase tracking-widest rounded-full shadow-lg hover:bg-brand-gold/90 transition-all flex items-center justify-center space-x-2 border border-white/10"
+                  className="px-6 py-3 bg-brand-purple text-white font-bold text-xs uppercase tracking-widest rounded-full shadow-lg hover:bg-brand-purple/90 transition-all flex items-center justify-center space-x-2 border border-white/10"
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>Book on WhatsApp</span>
@@ -91,7 +91,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
                   onClick={onOpenConsultant}
                   className="px-6 py-3 bg-white text-brand-primary font-bold text-xs uppercase tracking-widest rounded-full shadow-lg hover:bg-brand-bg-secondary transition-all flex items-center justify-center space-x-2"
                 >
-                  <Sparkles className="h-4 w-4 text-brand-gold fill-brand-gold/20 animate-pulse" />
+                  <Sparkles className="h-4 w-4 text-brand-purple fill-brand-purple/20 animate-pulse" />
                   <span>AI Bridal Planner</span>
                 </button>
               </div>
@@ -104,10 +104,10 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
             className="col-span-1 lg:col-span-5 lg:row-span-2 bg-white border border-brand-secondary/20 rounded-2xl p-4 lg:p-5 xl:p-6 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-primary/30 transition-all cursor-pointer group"
           >
             <div className="max-w-[70%] text-left">
-              <span className="text-[9px] uppercase tracking-wider text-brand-gold font-bold">Flawless Texturing</span>
+              <span className="text-[9px] uppercase tracking-wider text-brand-purple font-bold">Flawless Texturing</span>
               <h3 className="font-serif text-brand-primary text-xl lg:text-lg xl:text-2xl mt-0.5 mb-1 flex items-center gap-1 group-hover:text-brand-secondary transition-colors">
                 <span>Hair Texture</span>
-                <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-gold" />
+                <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-purple" />
               </h3>
               <p className="text-[11px] text-brand-text-muted leading-tight">
                 Keratin, smooth treatments, and customized protein restructuring for silky, radiant locks.
@@ -145,14 +145,14 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
           >
             <div className="flex justify-between items-start gap-1">
               <h3 className="font-serif text-brand-primary text-base lg:text-sm xl:text-lg font-bold group-hover:text-brand-secondary transition-colors">Facials & Spa</h3>
-              <span className="text-brand-gold text-[10px] xl:text-xs shrink-0">★★★★★</span>
+              <span className="text-brand-purple text-[10px] xl:text-xs shrink-0">★★★★★</span>
             </div>
             <div className="my-1 lg:my-0">
               <p className="text-[10px] xl:text-[11px] text-brand-text-muted leading-relaxed">
                 Luxury skin glows, bride-to-be body polishing, and clinical deep cleanups.
               </p>
             </div>
-            <span className="text-[9px] font-bold text-brand-primary uppercase underline underline-offset-4 cursor-pointer mt-1 group-hover:text-brand-gold transition-colors">
+            <span className="text-[9px] font-bold text-brand-primary uppercase underline underline-offset-4 cursor-pointer mt-1 group-hover:text-brand-purple transition-colors">
               View Spa Rituals
             </span>
           </div>
@@ -193,9 +193,9 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <div className="text-[9px] uppercase tracking-wider text-brand-text-muted mb-1 font-bold">Hand & Feet Treatment</div>
               <div className="text-lg lg:text-base xl:text-xl font-serif text-brand-primary font-bold group-hover:text-brand-secondary transition-colors flex items-center gap-1">
                 <span>Spa Pedicures</span>
-                <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-gold" />
+                <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-purple" />
               </div>
-              <div className="text-[10px] text-brand-gold mt-1 italic font-sans font-medium">Premium Rejuvenation</div>
+              <div className="text-[10px] text-brand-purple mt-1 italic font-sans font-medium">Premium Rejuvenation</div>
             </div>
 
             {/* Instant Booking Block */}
