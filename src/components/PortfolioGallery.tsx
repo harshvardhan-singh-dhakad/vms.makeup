@@ -408,7 +408,7 @@ export default function PortfolioGallery() {
                 {/* Badge for dynamically uploaded items */}
                 {img.id && (
                   <>
-                    <div className="absolute top-4 left-4 bg-brand-purple/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-[9px] font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
+                    <div className="absolute top-4 left-4 bg-brand-purple/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-xs font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
                       <Sparkles className="h-2.5 w-2.5" />
                       <span>Real Client</span>
                     </div>
@@ -428,13 +428,13 @@ export default function PortfolioGallery() {
                 <div className="absolute inset-0 bg-brand-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-left">
                   <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-start justify-between">
                     <div>
-                      <span className="text-[10px] uppercase font-sans tracking-widest text-brand-purple font-bold">
+                      <span className="text-xs uppercase font-sans tracking-widest text-brand-purple font-bold">
                         {img.category}
                       </span>
                       <h3 className="font-serif text-lg font-bold text-brand-bg-primary mt-1">
                         {img.title}
                       </h3>
-                      <p className="text-[11px] text-brand-bg-primary/80 font-sans mt-1 line-clamp-2">
+                      <p className="text-xs text-brand-bg-primary/80 font-sans mt-1 line-clamp-2">
                         {img.description}
                       </p>
                     </div>
@@ -490,7 +490,7 @@ export default function PortfolioGallery() {
                 <div className="md:col-span-5 p-6 flex flex-col justify-between text-left">
                   <div className="space-y-4">
                     <div>
-                      <span className="bg-brand-primary/10 text-brand-primary font-sans text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      <span className="bg-brand-primary/10 text-brand-primary font-sans text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                         {selectedImage.category}
                       </span>
                       <h3 className="font-serif text-xl font-bold text-brand-primary mt-3 leading-snug">
@@ -498,13 +498,13 @@ export default function PortfolioGallery() {
                       </h3>
                     </div>
                     
-                    <p className="font-sans text-xs text-brand-text-muted leading-relaxed">
+                    <p className="font-sans text-sm text-brand-text-muted leading-relaxed">
                       {selectedImage.description}
                     </p>
 
                     <div className="pt-2 border-t border-brand-secondary/15">
-                      <h4 className="font-sans font-bold text-[10px] text-brand-text-dark uppercase tracking-wider">Stylist Notes</h4>
-                      <p className="text-[11px] text-brand-text-muted font-sans mt-1">
+                      <h4 className="font-sans font-bold text-xs text-brand-text-dark uppercase tracking-wider">Stylist Notes</h4>
+                      <p className="text-sm text-brand-text-muted font-sans mt-1">
                         Tailored using skin-tone matching, botanical setting mist, and professional precision tools. Real, unprocessed transformational art.
                       </p>
                     </div>

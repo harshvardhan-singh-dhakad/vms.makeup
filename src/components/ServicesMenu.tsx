@@ -149,7 +149,7 @@ export default function ServicesMenu() {
                         </div>
                         <div className="pb-1 sm:pb-0 max-w-lg">
                           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary drop-shadow-sm">{category.name}</h3>
-                          <p className="text-xs sm:text-sm text-brand-text-dark font-sans mt-1.5 drop-shadow-sm font-medium leading-relaxed">{category.description}</p>
+                          <p className="text-sm sm:text-base text-brand-text-dark font-sans mt-1.5 drop-shadow-sm font-medium leading-relaxed">{category.description}</p>
                         </div>
                       </div>
                     </div>
@@ -160,7 +160,7 @@ export default function ServicesMenu() {
                       </div>
                       <div>
                         <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">{category.name}</h3>
-                        <p className="text-[11px] text-brand-text-muted mt-0.5">{category.description}</p>
+                        <p className="text-xs text-brand-text-muted mt-0.5">{category.description}</p>
                       </div>
                     </div>
                   );
@@ -187,7 +187,7 @@ export default function ServicesMenu() {
                         </div>
 
                         {item.isPremium && (
-                          <div className="absolute top-0 right-0 bg-brand-purple text-brand-bg-primary text-[8px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide z-10">
+                          <div className="absolute top-0 right-0 bg-brand-purple text-brand-bg-primary text-[10px] font-sans font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wide z-10">
                             Signature Offer
                           </div>
                         )}
@@ -202,7 +202,7 @@ export default function ServicesMenu() {
                                 {item.name}
                               </h4>
                               {item.description && (
-                                <p className="text-xs text-brand-text-muted font-sans mt-1.5 leading-relaxed">
+                                <p className="text-sm text-brand-text-muted font-sans mt-1.5 leading-relaxed">
                                   {item.description}
                                 </p>
                               )}
@@ -212,14 +212,14 @@ export default function ServicesMenu() {
 
                         {/* Card bottom block */}
                         <div className="flex items-center justify-between mt-4 pt-3 border-t border-brand-secondary/5">
-                          <span className="font-sans text-[11px] font-bold text-brand-secondary">
+                          <span className="font-sans text-xs font-bold text-brand-secondary">
                             {item.price || "Price on request via WhatsApp"}
                           </span>
                           
                           <button
                             id={`add-service-${item.id}`}
                             onClick={() => toggleCartItem(item)}
-                            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-sans text-[10px] font-bold transition-all ${
+                            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-sans text-xs font-bold transition-all ${
                               isSelected 
                                 ? 'bg-brand-primary text-brand-bg-primary' 
                                 : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-brand-bg-primary'

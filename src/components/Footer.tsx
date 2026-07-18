@@ -29,12 +29,12 @@ export default function Footer() {
                 <span className="font-serif text-xl font-bold tracking-tight">
                   {SALON_INFO.name}
                 </span>
-                <span className="block text-[8px] uppercase tracking-widest text-white/80 font-bold">
+                <span className="block text-[10px] uppercase tracking-widest text-white/80 font-bold">
                   Bridal & Beauty Studio
                 </span>
               </div>
             </div>
-            <p className="font-sans text-xs text-brand-bg-primary/85 leading-relaxed max-w-sm">
+            <p className="font-sans text-sm text-brand-bg-primary/85 leading-relaxed max-w-sm">
               Ujjain's ultimate luxury parlour experience. Trusted across Madhya Pradesh for gorgeous finished wedding lookups, precision hair textures, and artistic nails.
             </p>
             <div className="pt-2">
@@ -56,7 +56,7 @@ export default function Footer() {
             <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider">
               Business Hours
             </h3>
-            <div className="space-y-3 font-sans text-xs">
+            <div className="space-y-3 font-sans text-sm">
               <div className="flex items-start space-x-2.5">
                 <Clock className="h-4.5 w-4.5 text-white mt-0.5 shrink-0" />
                 <div>
@@ -71,7 +71,7 @@ export default function Footer() {
                   <p className="text-brand-bg-primary/85 mt-0.5">{SALON_INFO.hours.weekends}</p>
                 </div>
               </div>
-              <p className="text-[10px] text-white/90 font-medium italic">
+              <p className="text-xs text-white/90 font-medium italic">
                 * {SALON_INFO.hours.note}
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
             <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider">
               Reach Our Studio
             </h3>
-            <div className="space-y-3 font-sans text-xs">
+            <div className="space-y-3 font-sans text-sm">
               <div className="flex items-start space-x-2.5">
                 <MapPin className="h-4.5 w-4.5 text-white mt-0.5 shrink-0" />
                 <p className="text-brand-bg-primary/85 leading-relaxed">
@@ -121,7 +121,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom Block */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between font-sans text-xs text-brand-bg-primary/75 space-y-4 sm:space-y-0">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between font-sans text-sm text-brand-bg-primary/75 space-y-4 sm:space-y-0">
           <p>© {currentYear} {SALON_INFO.name} Salon & Bridal Studio. All rights reserved.</p>
           <div className="flex items-center space-x-1.5">
             <span>Crafted with</span>

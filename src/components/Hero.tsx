@@ -39,7 +39,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary leading-tight">
             Every Bride Deserves <span className="italic text-brand-secondary">A 5-Star Glow</span>
           </h1>
-          <p className="font-sans text-xs sm:text-sm text-brand-text-muted mt-2 px-4">
+          <p className="font-sans text-sm sm:text-base text-brand-text-muted mt-2 px-4">
             Where local Indian warmth meets luxury salon standards. Located in Scheme 54, Indore & Freegunj, Ujjain.
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-serif text-white leading-tight mb-3">
                 The Art of <span className="italic text-brand-secondary">Bridal</span><br/>Transformation
               </h2>
-              <p className="text-white/80 max-w-md text-xs sm:text-sm lg:text-xs xl:text-sm leading-relaxed mb-4 xl:mb-6 font-light">
+              <p className="text-white/85 max-w-md text-sm sm:text-base leading-relaxed mb-4 xl:mb-6 font-light">
                 From traditional Ujjain heritage lookups to modern high-definition contouring. Master bridal & engagement makeups designed with safe skin-prep rituals.
               </p>
               
@@ -109,7 +109,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
                 <span>Hair Texture</span>
                 <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-purple" />
               </h3>
-              <p className="text-[11px] text-brand-text-muted leading-tight">
+              <p className="text-xs text-brand-text-muted leading-tight">
                 Keratin, smooth treatments, and customized protein restructuring for silky, radiant locks.
               </p>
             </div>
@@ -130,8 +130,8 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <ArrowUpRight className="h-3.5 w-3.5 text-brand-secondary opacity-30 group-hover:opacity-100 transition-all" />
             </div>
             <div className="my-1 lg:my-0">
-              <div className="text-[10px] lg:text-[9px] xl:text-[11px] font-bold uppercase tracking-wider text-brand-primary mt-1">Elite Artistry</div>
-              <p className="text-[10px] lg:text-[9px] xl:text-[10px] text-brand-text-muted mt-0.5 leading-tight">9D Cat Eye, Chrome & Gel.</p>
+              <div className="text-xs lg:text-[10px] xl:text-xs font-bold uppercase tracking-wider text-brand-primary mt-1">Elite Artistry</div>
+              <p className="text-xs lg:text-[10px] xl:text-xs text-brand-text-muted mt-0.5 leading-tight">9D Cat Eye, Chrome & Gel.</p>
             </div>
             <div className="h-8 lg:h-9 xl:h-10 w-full bg-brand-secondary/10 rounded-xl border border-dashed border-brand-secondary/40 mt-2 flex items-center justify-center">
               <Feather className="h-3.5 w-3.5 text-brand-secondary" />
@@ -148,7 +148,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <span className="text-brand-purple text-[10px] xl:text-xs shrink-0">★★★★★</span>
             </div>
             <div className="my-1 lg:my-0">
-              <p className="text-[10px] xl:text-[11px] text-brand-text-muted leading-relaxed">
+              <p className="text-xs xl:text-sm text-brand-text-muted leading-relaxed">
                 Luxury skin glows, bride-to-be body polishing, and clinical deep cleanups.
               </p>
             </div>
@@ -165,17 +165,17 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               </div>
               <div>
                 <div className="text-xs font-bold text-brand-text-dark">Years of Pure Trust</div>
-                <div className="text-[10px] text-brand-text-muted font-sans">Trusted by brides across Indore & Ujjain</div>
+                <div className="text-xs text-brand-text-muted font-sans">Trusted by brides across Indore & Ujjain</div>
               </div>
             </div>
             <div className="h-[1px] w-full bg-brand-secondary/15 mb-2.5 xl:mb-4"></div>
             
             <div className="flex justify-between items-center gap-2">
-              <div className="text-[10px] text-brand-text-muted">
+              <div className="text-xs text-brand-text-muted">
                 <p className="font-bold text-brand-text-dark">Vijay Nagar, Indore</p>
                 <p className="mt-0.5">Scheme No 54, Main Rd</p>
               </div>
-              <div className="text-[10px] text-brand-text-muted">
+              <div className="text-xs text-brand-text-muted">
                 <p className="font-bold text-brand-text-dark">Freegunj, Ujjain</p>
                 <p className="mt-0.5">Studio Walk-in Spot</p>
               </div>
@@ -190,7 +190,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               onClick={() => scrollToCategory('hand-feet')}
               className="flex-1 bg-white border border-brand-secondary/20 rounded-2xl p-4 lg:p-4 xl:p-6 flex flex-col justify-center text-left shadow-sm hover:shadow-md hover:border-brand-primary/30 transition-all cursor-pointer group"
             >
-              <div className="text-[9px] uppercase tracking-wider text-brand-text-muted mb-1 font-bold">Hand & Feet Treatment</div>
+              <div className="text-xs uppercase tracking-wider text-brand-text-muted mb-1 font-bold">Hand & Feet Treatment</div>
               <div className="text-lg lg:text-base xl:text-xl font-serif text-brand-primary font-bold group-hover:text-brand-secondary transition-colors flex items-center gap-1">
                 <span>Spa Pedicures</span>
                 <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all text-brand-purple" />
@@ -212,7 +212,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
                   <span>Always Online</span>
                 </span>
                 <h4 className="text-brand-primary font-bold text-xs lg:text-xs xl:text-sm uppercase tracking-wider">Instant Booking</h4>
-                <p className="text-[11px] lg:text-[10px] xl:text-xs text-brand-text-muted mt-0.5 leading-tight">
+                <p className="text-xs lg:text-[11px] xl:text-sm text-brand-text-muted mt-0.5 leading-tight">
                   Skip the line. Click here to confirm instantly.
                 </p>
               </div>
