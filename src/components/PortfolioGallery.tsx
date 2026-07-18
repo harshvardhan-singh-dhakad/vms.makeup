@@ -40,6 +40,7 @@ interface GalleryItem {
   url: string;
   description: string;
   createdAt?: any;
+  isPreset?: boolean;
 }
 
 export default function PortfolioGallery() {
@@ -79,6 +80,28 @@ export default function PortfolioGallery() {
   // Fetch custom uploaded images from Firestore
   const fetchDynamicGallery = async () => {
     try {
+      const { doc: getFirestoreDoc, getDoc, setDoc } = await import('firebase/firestore');
+      const stateDocRef = getFirestoreDoc(db, 'gallery_config', 'state');
+      const stateDocSnap = await getDoc(stateDocRef);
+      const isInitialized = stateDocSnap.exists() && stateDocSnap.data()?.initialized === true;
+
+      if (!isInitialized && GALLERY_IMAGES.length > 0) {
+        console.log("Initializing Firestore with default preset gallery images...");
+        for (let i = 0; i < GALLERY_IMAGES.length; i++) {
+          const preset = GALLERY_IMAGES[i];
+          await addDoc(collection(db, 'portfolio_gallery'), {
+            title: preset.title,
+            category: preset.category,
+            url: preset.url,
+            description: preset.description,
+            isPreset: true,
+            createdAt: new Date(Date.now() - (i * 10000)) // maintain order
+          });
+        }
+        await setDoc(stateDocRef, { initialized: true });
+        console.log("Firestore initialization complete.");
+      }
+
       const q = query(collection(db, 'portfolio_gallery'), orderBy('createdAt', 'desc'));
       const snapshot = await getDocs(q);
       const items: GalleryItem[] = [];
@@ -90,6 +113,7 @@ export default function PortfolioGallery() {
           category: data.category,
           url: data.url,
           description: data.description,
+          isPreset: data.isPreset || false,
           createdAt: data.createdAt
         });
       });
@@ -166,10 +190,7 @@ export default function PortfolioGallery() {
     };
   }, [selectedImage]);
 
-  const allImages = [
-    ...dynamicImages,
-    ...GALLERY_IMAGES.map(img => ({ ...img, category: img.category as any }))
-  ];
+  const allImages = dynamicImages;
 
   const filteredImages = allImages.filter(
     img => activeFilter === 'all' || img.category === activeFilter
@@ -406,22 +427,20 @@ export default function PortfolioGallery() {
                 />
 
                 {/* Badge for dynamically uploaded items */}
-                {img.id && (
-                  <>
-                    <div className="absolute top-4 left-4 bg-brand-purple/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-xs font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
-                      <Sparkles className="h-2.5 w-2.5" />
-                      <span>Real Client</span>
-                    </div>
-                    {isAdmin && (
-                      <button
-                        onClick={(e) => handleDeleteImage(img.id!, e)}
-                        className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-red-600 text-white p-2 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md backdrop-blur-xs"
-                        title="Delete Look"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    )}
-                  </>
+                {img.id && !img.isPreset && (
+                  <div className="absolute top-4 left-4 bg-brand-purple/90 text-brand-bg-primary px-2.5 py-1 rounded-full font-sans text-xs font-bold tracking-wider uppercase flex items-center space-x-1 shadow-sm backdrop-blur-xs">
+                    <Sparkles className="h-2.5 w-2.5" />
+                    <span>Real Client</span>
+                  </div>
+                )}
+                {isAdmin && img.id && (
+                  <button
+                    onClick={(e) => handleDeleteImage(img.id!, e)}
+                    className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-red-600 text-white p-2 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md backdrop-blur-xs"
+                    title="Delete Look"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </button>
                 )}
 
                 {/* Hover Overlay */}
