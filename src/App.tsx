@@ -7,6 +7,7 @@ import Reviews from './components/Reviews';
 import AboutAndStory from './components/AboutAndStory';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
+import SeoContent from './components/SeoContent';
 import { MessageCircle, Sparkles, MapPin, Phone, Clock, X } from 'lucide-react';
 import { SALON_INFO } from './data';
 
@@ -56,7 +57,7 @@ export default function App() {
       />
 
       {/* Main Sections */}
-      <main>
+      <main aria-label="Vms Makeup Bridal Studio — Services, Portfolio, Reviews and Contact">
         {/* Hero Section */}
         <Hero 
           onExploreServices={() => {
@@ -86,6 +87,9 @@ export default function App() {
         <ScrollReveal direction="up" duration={800}>
           <Reviews />
         </ScrollReveal>
+
+        {/* Hidden SEO / GEO / AEO Semantic Content for Search Crawlers */}
+        <SeoContent />
       </main>
 
       {/* Footer Contact Sheet */}

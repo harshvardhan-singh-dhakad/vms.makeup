@@ -46,7 +46,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
             <span>Indore & Ujjain's Premium Sanctuary</span>
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary leading-tight">
-            Every Bride Deserves <span className="italic text-brand-secondary">A 5-Star Glow</span>
+            Best Bridal Makeup Studio <span className="italic text-brand-secondary">Ujjain & Indore</span>
           </h1>
           <p className="font-sans text-sm sm:text-base text-brand-text-muted mt-2 px-4">
             Where local Indian warmth meets luxury salon standards. Located in Scheme 54, Indore & Freegunj, Ujjain.
@@ -62,9 +62,13 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
             <div className="absolute inset-0 z-0">
               <img 
                 src={heroBride} 
-                alt="Radiant Indian Bride Makeup Look"
+                alt="Vms Makeup — Radiant Bridal Makeup Look by the Best Bridal Studio in Ujjain and Indore, Madhya Pradesh"
                 className="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-700 ease-out"
                 referrerPolicy="no-referrer"
+                width="800"
+                height="1000"
+                loading="eager"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2d0019]/95 via-[#2d0019]/50 to-transparent z-10" />
               <div className="absolute inset-0 bg-brand-primary/20 mix-blend-overlay z-10" />
@@ -115,7 +119,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <span>Indore & Ujjain's Premium Sanctuary</span>
             </span>
             <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-primary leading-tight">
-              Every Bride Deserves <span className="italic text-brand-secondary">A 5-Star Glow</span>
+              Best Bridal Makeup Studio <span className="italic text-brand-secondary">Ujjain & Indore</span>
             </h1>
             <p className="font-sans text-sm lg:text-base text-brand-text-muted mt-3 leading-relaxed">
               Where local Indian warmth meets luxury salon standards. Experience custom beauty consults, clinical skin cleanups, and artistic styling in Scheme 54, Indore & Freegunj, Ujjain.

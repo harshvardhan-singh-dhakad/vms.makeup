@@ -1,0 +1,108 @@
+# Vms Makeup Robots.txt
+# https://www.vmsmakeup.in/
+
+# =============================================
+# Allow ALL crawlers by default
+# =============================================
+User-agent: *
+Allow: /
+
+# =============================================
+# STANDARD SEARCH ENGINE BOTS
+# =============================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# =============================================
+# AI ANSWER ENGINE BOTS (GEO Optimization)
+# Explicitly allow so AI search engines can
+# index this site for generative results
+# =============================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# Google Gemini / Bard / SGE
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Apple Applebot (Siri)
+User-agent: Applebot
+Allow: /
+
+# Common Crawl (used for AI training datasets)
+User-agent: CCBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# =============================================
+# SOCIAL MEDIA PREVIEW BOTS
+# =============================================
+
+# WhatsApp / Facebook / Instagram link previews
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter / X link previews
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn link previews
+User-agent: LinkedInBot
+Allow: /
+
+# Telegram link previews
+User-agent: TelegramBot
+Allow: /
+
+# =============================================
+# BLOCK ACCESS TO NON-PUBLIC DIRECTORIES
+# =============================================
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.local
+Disallow: /.env.example
+Disallow: /src/
+Disallow: /vms/
+Disallow: /.firebase/
+
+# =============================================
+# SITEMAP REFERENCE
+# =============================================
+Sitemap: https://www.vmsmakeup.in/sitemap.xml
+
+# Crawl-delay (politeness)
+Crawl-delay: 1

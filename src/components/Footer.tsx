@@ -15,7 +15,18 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-brand-primary text-brand-bg-primary pt-16 pb-8 relative overflow-hidden">
+    <footer 
+      id="contact" 
+      className="bg-brand-primary text-brand-bg-primary pt-16 pb-8 relative overflow-hidden"
+      itemScope
+      itemType="https://schema.org/BeautySalon"
+      aria-label="Contact Vms Makeup Bridal Studio"
+    >
+      {/* Hidden schema microdata */}
+      <meta itemProp="name" content="Vms Makeup" />
+      <meta itemProp="url" content="https://www.vmsmakeup.in/" />
+      <meta itemProp="priceRange" content="₹₹" />
+      <meta itemProp="telephone" content="+919876543210" />
       {/* Decorative Gold Border Line */}
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-white/45 to-transparent" />
       
@@ -43,7 +54,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="font-sans text-sm text-brand-bg-primary/85 leading-relaxed max-w-sm">
+            <p className="font-sans text-sm text-brand-bg-primary/85 leading-relaxed max-w-sm" itemProp="description">
               Ujjain's ultimate luxury parlour experience. Trusted across Madhya Pradesh for gorgeous finished wedding lookups, precision hair textures, and artistic nails.
             </p>
             <div className="pt-2">
@@ -84,6 +95,8 @@ export default function Footer() {
               <p className="text-xs text-white/90 font-medium italic">
                 * {SALON_INFO.hours.note}
               </p>
+              <meta itemProp="openingHours" content="Mo-Fr 10:30-20:30" />
+              <meta itemProp="openingHours" content="Sa-Su 10:00-21:00" />
             </div>
           </div>
 
@@ -95,8 +108,16 @@ export default function Footer() {
             <div className="space-y-3 font-sans text-sm">
               <div className="flex items-start space-x-2.5">
                 <MapPin className="h-4.5 w-4.5 text-white mt-0.5 shrink-0" />
-                <p className="text-brand-bg-primary/85 leading-relaxed">
-                  {SALON_INFO.address}
+                <p 
+                  className="text-brand-bg-primary/85 leading-relaxed"
+                  itemProp="address"
+                  itemScope
+                  itemType="https://schema.org/PostalAddress"
+                >
+                  <span itemProp="streetAddress">Freegunj</span>,{' '}
+                  <span itemProp="addressLocality">Ujjain</span>,{' '}
+                  <span itemProp="addressRegion">Madhya Pradesh</span>,{' '}
+                  <span itemProp="addressCountry">India</span>
                 </p>
               </div>
               {SALON_INFO.contactNumber && (
