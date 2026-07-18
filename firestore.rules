@@ -20,5 +20,11 @@ service cloud.firestore {
     match /gallery_config/{docId} {
       allow read, write: if true;
     }
+
+    // Admin Credentials rule
+    match /admin_credentials/{docId} {
+      allow read: if true;
+      allow write: if false; // prevent changes from outside
+    }
   }
 }

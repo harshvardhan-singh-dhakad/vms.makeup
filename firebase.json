@@ -13,7 +13,10 @@
       }
     ]
   },
-  "firestore": {
-    "rules": "firestore.rules"
-  }
+  "firestore": [
+    {
+      "database": "ai-studio-vmsmakeupsalonbr-8b67707f-25ee-48af-bf51-5c411c707f8e",
+      "rules": "firestore.rules"
+    }
+  ]
 }

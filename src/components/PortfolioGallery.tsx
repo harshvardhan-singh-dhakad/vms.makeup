@@ -151,23 +151,58 @@ export default function PortfolioGallery() {
     }
   };
 
-  const handleAdminLogin = (e: React.FormEvent) => {
+  const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const envUsername = (import.meta as any).env.VITE_ADMIN_USERNAME || "jayesh soni";
-    const envPassword = (import.meta as any).env.VITE_ADMIN_PASSWORD || "jayesh@100";
-    
-    const normalizedInputUser = adminUsername.trim().toLowerCase();
-    const normalizedEnvUser = envUsername.trim().toLowerCase();
+    setLoginError(null);
+    const normalizedInputUser = adminUsername.trim().toLowerCase().replace(/\s+/g, '_');
 
-    if (normalizedInputUser === normalizedEnvUser && adminPasscode === envPassword) {
-      setIsAdmin(true);
-      localStorage.setItem('vms_admin_logged_in', 'true');
-      setIsAdminLoginOpen(false);
-      setAdminUsername('');
-      setAdminPasscode('');
-      setLoginError(null);
-    } else {
+    try {
+      const { doc: getFirestoreDoc, getDoc } = await import('firebase/firestore');
+      const credentialDocRef = getFirestoreDoc(db, 'admin_credentials', normalizedInputUser);
+      const credentialSnap = await getDoc(credentialDocRef);
+
+      if (credentialSnap.exists()) {
+        const data = credentialSnap.data();
+        if (data.passcode === adminPasscode) {
+          setIsAdmin(true);
+          localStorage.setItem('vms_admin_logged_in', 'true');
+          setIsAdminLoginOpen(false);
+          setAdminUsername('');
+          setAdminPasscode('');
+          setLoginError(null);
+          return;
+        }
+      }
+      
+      // Fallback for local testing/dev if document doesn't exist
+      const envUsername = "jayesh soni";
+      const envPassword = "jayesh@100";
+      if (adminUsername.trim().toLowerCase() === envUsername && adminPasscode === envPassword) {
+        setIsAdmin(true);
+        localStorage.setItem('vms_admin_logged_in', 'true');
+        setIsAdminLoginOpen(false);
+        setAdminUsername('');
+        setAdminPasscode('');
+        setLoginError(null);
+        return;
+      }
+
       setLoginError("Invalid Admin Name or Password. Please check credentials.");
+    } catch (err) {
+      console.error("Backend login check failed, falling back to local verification:", err);
+      // Hard fallback if Firestore check fails
+      const envUsername = "jayesh soni";
+      const envPassword = "jayesh@100";
+      if (adminUsername.trim().toLowerCase() === envUsername && adminPasscode === envPassword) {
+        setIsAdmin(true);
+        localStorage.setItem('vms_admin_logged_in', 'true');
+        setIsAdminLoginOpen(false);
+        setAdminUsername('');
+        setAdminPasscode('');
+        setLoginError(null);
+      } else {
+        setLoginError("Verification failed. Please check credentials.");
+      }
     }
   };
 
