@@ -15,5 +15,10 @@ service cloud.firestore {
         && request.resource.data.description is string;
       allow delete: if true;
     }
+
+    // Gallery Config rule
+    match /gallery_config/{docId} {
+      allow read, write: if true;
+    }
   }
 }

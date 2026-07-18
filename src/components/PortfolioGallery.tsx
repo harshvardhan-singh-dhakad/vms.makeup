@@ -120,6 +120,15 @@ export default function PortfolioGallery() {
       setDynamicImages(items);
     } catch (err) {
       console.error("Error loading custom gallery: ", err);
+      // Fallback to local presets if database load fails
+      setDynamicImages(GALLERY_IMAGES.map((img, idx) => ({
+        id: `fallback-${idx}`,
+        title: img.title,
+        category: img.category as any,
+        url: img.url,
+        description: img.description,
+        isPreset: true
+      })));
     }
   };
 
