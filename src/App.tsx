@@ -8,12 +8,36 @@ import AboutAndStory from './components/AboutAndStory';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
 import SeoContent from './components/SeoContent';
+import AdminPanel from './components/AdminPanel';
+import AIConsultant from './components/AIConsultant';
 import { MessageCircle, Sparkles, MapPin, Phone, Clock, X } from 'lucide-react';
 import { SALON_INFO } from './data';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isBookingClosedOpen, setIsBookingClosedOpen] = useState(false);
+  const [isConsultantOpen, setIsConsultantOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    
+    // Custom navigation handler for app-wide use
+    (window as any).navigateToPath = (path: string) => {
+      window.history.pushState(null, '', path);
+      setCurrentPath(path);
+      // Scroll to top when changing paths
+      window.scrollTo(0, 0);
+    };
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      delete (window as any).navigateToPath;
+    };
+  }, []);
 
   useEffect(() => {
     (window as any).showBookingClosedModal = () => {
@@ -26,6 +50,8 @@ export default function App() {
 
   // Simple scroll-spy to highlight active section in Header
   useEffect(() => {
+    if (currentPath === '/admin') return;
+
     const handleScroll = () => {
       const sections = ['home', 'services', 'gallery', 'about', 'reviews', 'contact'];
       const scrollPos = window.scrollY + 120; // safe header offset
@@ -45,7 +71,11 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPath]);
+
+  if (currentPath === '/admin') {
+    return <AdminPanel onNavigateHome={() => (window as any).navigateToPath('/')} />;
+  }
 
   return (
     <div className="min-h-screen bg-brand-bg-primary font-sans text-brand-text-dark selection:bg-brand-primary/10 selection:text-brand-primary">
@@ -54,12 +84,14 @@ export default function App() {
       <Header 
         activeSection={activeSection} 
         setActiveSection={setActiveSection}
+        onOpenConsultant={() => setIsConsultantOpen(true)}
       />
 
       {/* Main Sections */}
       <main aria-label="Vms Makeup Bridal Studio — Services, Portfolio, Reviews and Contact">
         {/* Hero Section */}
         <Hero 
+          onOpenConsultant={() => setIsConsultantOpen(true)}
           onExploreServices={() => {
             const element = document.getElementById('services');
             if (element) {
@@ -154,7 +186,11 @@ export default function App() {
             </button>
           </div>
         </div>
-      )}
+      )}      {/* AI Consultant Drawer */}
+      <AIConsultant 
+        isOpen={isConsultantOpen} 
+        onClose={() => setIsConsultantOpen(false)} 
+      />
 
     </div>
   );

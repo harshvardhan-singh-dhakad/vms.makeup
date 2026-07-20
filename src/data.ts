@@ -10,6 +10,11 @@ import crimsonEmeraldGlowImg from './assets/images/royal_crimson_emerald_glow.jp
 import ivoryEleganceImg from './assets/images/ivory_elegance_bride.jpg';
 import aestheticSideGlanceImg from './assets/images/aesthetic_side_glance.jpg';
 import traditionalImperialBraidImg from './assets/images/traditional_imperial_braid.jpg';
+import royalTealKundanImg from './assets/images/royal_teal_kundan_bride.jpg';
+import imperialVelvetCrimsonImg from './assets/images/imperial_velvet_crimson_bride.jpg';
+import gildedTealSmileImg from './assets/images/gilded_teal_smile_look.jpg';
+import shadowedCrimsonGlamourImg from './assets/images/shadowed_crimson_glamour.jpg';
+import regalSpotlightGlowImg from './assets/images/regal_spotlight_bridal_glow.jpg';
 
 import categoryMakeupImg from './assets/images/category_makeup.jpg';
 import categoryHairStylingImg from './assets/images/category_hair_styling.jpg';
@@ -187,6 +192,36 @@ export const SERVICES_DATA: ServiceCategory[] = [
 ];
 
 export const GALLERY_IMAGES = [
+  {
+    title: "Royal Teal Kundan Bride",
+    category: "makeup",
+    url: royalTealKundanImg,
+    description: "A stunning traditional bridal look featuring an exquisite deep teal/blue lehenga with gold hand embroidery, complete with a royal gold kundan choker, matching maang tikka, and detailed henna designs."
+  },
+  {
+    title: "Imperial Velvet Crimson Bride",
+    category: "makeup",
+    url: imperialVelvetCrimsonImg,
+    description: "Elegant bridal makeover with a rich crimson velvet lehenga, glowing skin, soft smokey pink eyes, and traditional gold jewelry setting, captured beautifully in Indore studio."
+  },
+  {
+    title: "Gilded Teal Smile Look",
+    category: "makeup",
+    url: gildedTealSmileImg,
+    description: "Soft profile capture of our gorgeous bride in a teal velvet outfit, showing off hand-detailed zardozi embroidery, elegant pink bridal eye makeup, and a graceful kundan jewelry ensemble."
+  },
+  {
+    title: "Shadowed Crimson Glamour",
+    category: "makeup",
+    url: shadowedCrimsonGlamourImg,
+    description: "A captivating bridal portrait highlighting a heavy crimson lehenga, premium zardozi work, side chains, a classic gold nath, and sophisticated high-definition matte makeup."
+  },
+  {
+    title: "Regal Spotlight Bridal Glow",
+    category: "makeup",
+    url: regalSpotlightGlowImg,
+    description: "Exquisite bridal makeup under warm spotlighting, featuring a heavy red velvet lehenga, glowing highlight cheeks, matching maroon lip colors, and hand-crafted kundan jewelry set."
+  },
   {
     title: "Crimson Royalty Bridal Glow",
     category: "makeup",
