@@ -1,7 +1,7 @@
 import React from 'react';
 import { SALON_INFO } from '../data';
 import { Award, Heart, CheckCircle2, ShieldCheck, Compass } from 'lucide-react';
-import aboutBride from '../assets/images/regenerated_image_1783878956404.jpg';
+import aboutBride from '../assets/images/about_bride_main.jpg';
 
 export default function AboutAndStory() {
   const brandPillars = [
