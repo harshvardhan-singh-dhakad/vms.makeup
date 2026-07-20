@@ -12,12 +12,17 @@ import AdminPanel from './components/AdminPanel';
 import AIConsultant from './components/AIConsultant';
 import { MessageCircle, Sparkles, MapPin, Phone, Clock, X } from 'lucide-react';
 import { SALON_INFO } from './data';
+import { db } from './lib/firebase';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isBookingClosedOpen, setIsBookingClosedOpen] = useState(false);
   const [isConsultantOpen, setIsConsultantOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [salonInfo, setSalonInfo] = useState({
+    heroTitle: "Best Bridal Makeup Studio Ujjain & Indore",
+    aboutStory: SALON_INFO.aboutStory
+  });
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -37,6 +42,26 @@ export default function App() {
       window.removeEventListener('popstate', handleLocationChange);
       delete (window as any).navigateToPath;
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchSalonConfig = async () => {
+      try {
+        const { doc, getDoc } = await import('firebase/firestore');
+        const docRef = doc(db, 'salon_config', 'info');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setSalonInfo({
+            heroTitle: data.heroTitle || "Best Bridal Makeup Studio Ujjain & Indore",
+            aboutStory: data.aboutStory || SALON_INFO.aboutStory
+          });
+        }
+      } catch (err) {
+        console.error("Failed to fetch salon config: ", err);
+      }
+    };
+    fetchSalonConfig();
   }, []);
 
   useEffect(() => {
@@ -74,7 +99,13 @@ export default function App() {
   }, [currentPath]);
 
   if (currentPath === '/admin') {
-    return <AdminPanel onNavigateHome={() => (window as any).navigateToPath('/')} />;
+    return (
+      <AdminPanel 
+        onNavigateHome={() => (window as any).navigateToPath('/')} 
+        salonInfo={salonInfo}
+        onUpdateSalonInfo={(updatedInfo) => setSalonInfo(updatedInfo)}
+      />
+    );
   }
 
   return (
@@ -91,6 +122,7 @@ export default function App() {
       <main aria-label="Vms Makeup Bridal Studio — Services, Portfolio, Reviews and Contact">
         {/* Hero Section */}
         <Hero 
+          salonInfo={salonInfo}
           onOpenConsultant={() => setIsConsultantOpen(true)}
           onExploreServices={() => {
             const element = document.getElementById('services');
@@ -102,7 +134,7 @@ export default function App() {
 
         {/* Why Choose Us & Salon Story */}
         <ScrollReveal direction="up" duration={800}>
-          <AboutAndStory />
+          <AboutAndStory salonInfo={salonInfo} />
         </ScrollReveal>
 
         {/* Services Tabbed Accordion Menu */}

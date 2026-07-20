@@ -4,11 +4,15 @@ import { SALON_INFO } from '../data';
 import heroBride from '../assets/images/regenerated_image_1784135367248.jpg';
 
 interface HeroProps {
+  salonInfo?: {
+    heroTitle: string;
+    aboutStory: string;
+  };
   onOpenConsultant: () => void;
   onExploreServices: () => void;
 }
 
-export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps) {
+export default function Hero({ salonInfo, onOpenConsultant, onExploreServices }: HeroProps) {
   const scrollToCategory = (categoryId: string) => {
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
@@ -46,7 +50,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
             <span>Indore & Ujjain's Premium Sanctuary</span>
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary leading-tight">
-            Best Bridal Makeup Studio <span className="italic text-brand-secondary">Ujjain & Indore</span>
+            {salonInfo?.heroTitle || "Best Bridal Makeup Studio Ujjain & Indore"}
           </h1>
           <p className="font-sans text-sm sm:text-base text-brand-text-muted mt-2 px-4">
             Where local Indian warmth meets luxury salon standards. Located in Scheme 54, Indore & Freegunj, Ujjain.
@@ -119,7 +123,7 @@ export default function Hero({ onOpenConsultant, onExploreServices }: HeroProps)
               <span>Indore & Ujjain's Premium Sanctuary</span>
             </span>
             <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-primary leading-tight">
-              Best Bridal Makeup Studio <span className="italic text-brand-secondary">Ujjain & Indore</span>
+              {salonInfo?.heroTitle || "Best Bridal Makeup Studio Ujjain & Indore"}
             </h1>
             <p className="font-sans text-sm lg:text-base text-brand-text-muted mt-3 leading-relaxed">
               Where local Indian warmth meets luxury salon standards. Experience custom beauty consults, clinical skin cleanups, and artistic styling in Scheme 54, Indore & Freegunj, Ujjain.

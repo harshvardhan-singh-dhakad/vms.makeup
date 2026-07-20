@@ -44,15 +44,34 @@ interface GalleryItem {
 
 interface AdminPanelProps {
   onNavigateHome: () => void;
+  salonInfo?: {
+    heroTitle: string;
+    aboutStory: string;
+  };
+  onUpdateSalonInfo?: (updatedInfo: { heroTitle: string; aboutStory: string }) => void;
 }
 
-export default function AdminPanel({ onNavigateHome }: AdminPanelProps) {
+export default function AdminPanel({ onNavigateHome, salonInfo, onUpdateSalonInfo }: AdminPanelProps) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [adminUsername, setAdminUsername] = useState('');
   const [adminPasscode, setAdminPasscode] = useState('');
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
+  // Editable Text Config states
+  const [heroTitleInput, setHeroTitleInput] = useState(salonInfo?.heroTitle || "Best Bridal Makeup Studio Ujjain & Indore");
+  const [aboutStoryInput, setAboutStoryInput] = useState(salonInfo?.aboutStory || "");
+  const [updatingTextConfig, setUpdatingTextConfig] = useState(false);
+  const [textConfigSuccess, setTextConfigSuccess] = useState(false);
+  const [textConfigError, setTextConfigError] = useState("");
+  const [activeTab, setActiveTab] = useState<'post' | 'textConfig'>('post');
+
+  useEffect(() => {
+    if (salonInfo) {
+      setHeroTitleInput(salonInfo.heroTitle);
+      setAboutStoryInput(salonInfo.aboutStory);
+    }
+  }, [salonInfo]);
   // Gallery items management
   const [dynamicImages, setDynamicImages] = useState<GalleryItem[]>([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(false);
@@ -102,6 +121,39 @@ export default function AdminPanel({ onNavigateHome }: AdminPanelProps) {
       console.error("Error loading gallery for admin: ", err);
     } finally {
       setIsLoadingGallery(false);
+    }
+  };
+
+  const handleUpdateTextConfig = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUpdatingTextConfig(true);
+    setTextConfigSuccess(false);
+    setTextConfigError("");
+
+    try {
+      const { doc, setDoc } = await import('firebase/firestore');
+      const docRef = doc(db, 'salon_config', 'info');
+      await setDoc(docRef, {
+        heroTitle: heroTitleInput,
+        aboutStory: aboutStoryInput,
+        updatedAt: new Date()
+      }, { merge: true });
+
+      if (onUpdateSalonInfo) {
+        onUpdateSalonInfo({
+          heroTitle: heroTitleInput,
+          aboutStory: aboutStoryInput
+        });
+      }
+      setTextConfigSuccess(true);
+      setTimeout(() => {
+        setTextConfigSuccess(false);
+      }, 3000);
+    } catch (err: any) {
+      console.error("Failed to update salon config: ", err);
+      setTextConfigError(err.message || "An error occurred while updating settings.");
+    } finally {
+      setUpdatingTextConfig(false);
     }
   };
 
@@ -501,175 +553,293 @@ export default function AdminPanel({ onNavigateHome }: AdminPanelProps) {
                 <Upload className="h-24 w-24 text-white" />
               </div>
 
-              <h2 className="font-serif text-2xl font-bold text-white mb-1 flex items-center gap-2">
-                <Plus className="h-5.5 w-5.5 text-brand-primary" />
-                <span>Post Transformation</span>
-              </h2>
-              <p className="text-xs text-neutral-400 mb-6 font-sans">
-                Post high-resolution images of your real clients to showcase on the main portfolio.
-              </p>
+              {/* Tab Selector */}
+              <div className="flex border-b border-neutral-800 mb-6">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('post')}
+                  className={`flex-1 pb-3 text-xs font-bold uppercase tracking-wider font-sans transition-all border-b-2 ${
+                    activeTab === 'post' 
+                      ? 'border-brand-primary text-white font-semibold' 
+                      : 'border-transparent text-neutral-400 hover:text-neutral-200'
+                  }`}
+                >
+                  Post Look
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('textConfig')}
+                  className={`flex-1 pb-3 text-xs font-bold uppercase tracking-wider font-sans transition-all border-b-2 ${
+                    activeTab === 'textConfig' 
+                      ? 'border-brand-primary text-white font-semibold' 
+                      : 'border-transparent text-neutral-400 hover:text-neutral-200'
+                  }`}
+                >
+                  Edit Site Text
+                </button>
+              </div>
 
-              <form onSubmit={handleUploadSubmit} className="space-y-5">
-                {/* Title */}
-                <div>
-                  <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
-                    Look Title *
-                  </label>
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="e.g. Royal Rajasthani Bridal Glow"
-                    value={uploadTitle}
-                    onChange={(e) => setUploadTitle(e.target.value)}
-                    disabled={isUploading || uploadSuccess}
-                    className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all"
-                  />
-                </div>
+              {activeTab === 'post' ? (
+                <>
+                  <h2 className="font-serif text-2xl font-bold text-white mb-1 flex items-center gap-2">
+                    <Plus className="h-5.5 w-5.5 text-brand-primary" />
+                    <span>Post Transformation</span>
+                  </h2>
+                  <p className="text-xs text-neutral-400 mb-6 font-sans">
+                    Post high-resolution images of your real clients to showcase on the main portfolio.
+                  </p>
 
-                {/* Category */}
-                <div>
-                  <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
-                    Category Type *
-                  </label>
-                  <select
-                    value={uploadCategory}
-                    onChange={(e) => setUploadCategory(e.target.value as any)}
-                    disabled={isUploading || uploadSuccess}
-                    className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all"
-                  >
-                    <option value="makeup">Bridal & Party Make Up</option>
-                    <option value="hair">Hair Texturing & Styles</option>
-                    <option value="nails">Elite Nail Art</option>
-                    <option value="facials">Luxury Skin Glows</option>
-                  </select>
-                </div>
-
-                {/* Description */}
-                <div>
-                  <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
-                    Transformation Details *
-                  </label>
-                  <textarea 
-                    required
-                    rows={4}
-                    placeholder="Describe the makeup brand, shade details, hair accessories, or specific client skin prep techniques."
-                    value={uploadDescription}
-                    onChange={(e) => setUploadDescription(e.target.value)}
-                    disabled={isUploading || uploadSuccess}
-                    className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all resize-none"
-                  />
-                </div>
-
-                {/* File Drop Area */}
-                <div>
-                  <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
-                    Client Transformation Photo *
-                  </label>
-                  
-                  {!imagePreview ? (
-                    <div 
-                      onDragEnter={handleDrag}
-                      onDragOver={handleDrag}
-                      onDragLeave={handleDrag}
-                      onDrop={handleDrop}
-                      onClick={() => fileInputRef.current?.click()}
-                      className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
-                        isDragActive 
-                          ? 'border-brand-primary bg-brand-primary/5' 
-                          : 'border-neutral-800 hover:border-brand-primary/50 hover:bg-neutral-800/30'
-                      }`}
-                    >
+                  <form onSubmit={handleUploadSubmit} className="space-y-5">
+                    {/* Title */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        Look Title *
+                      </label>
                       <input 
-                        type="file"
-                        ref={fileInputRef}
-                        onChange={handleFileChange}
-                        accept="image/*"
-                        className="hidden"
+                        type="text" 
+                        required
+                        placeholder="e.g. Royal Rajasthani Bridal Glow"
+                        value={uploadTitle}
+                        onChange={(e) => setUploadTitle(e.target.value)}
                         disabled={isUploading || uploadSuccess}
+                        className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all"
                       />
-                      <Upload className="h-9 w-9 text-neutral-500 mx-auto mb-3" />
-                      <p className="text-xs font-bold text-neutral-300 font-sans">
-                        Drag & drop client image or <span className="text-brand-primary underline font-extrabold">browse file</span>
-                      </p>
-                      <p className="text-[10px] text-neutral-500 mt-1 font-sans">
-                        Supports PNG, JPG, JPEG, WEBP up to 8MB
-                      </p>
                     </div>
-                  ) : (
-                    <div className="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 p-2.5 flex items-center justify-between">
-                      <div className="flex items-center space-x-3.5">
-                        <img 
-                          src={imagePreview} 
-                          alt="Preview" 
-                          className="h-16 w-16 object-cover rounded-xl border border-neutral-800"
-                        />
-                        <div className="text-left max-w-[180px] truncate">
-                          <p className="text-xs font-bold text-neutral-200 font-sans truncate font-sans">
-                            {selectedFile?.name || "Uploaded Image"}
+
+                    {/* Category */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        Category Type *
+                      </label>
+                      <select
+                        value={uploadCategory}
+                        onChange={(e) => setUploadCategory(e.target.value as any)}
+                        disabled={isUploading || uploadSuccess}
+                        className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all"
+                      >
+                        <option value="makeup">Bridal & Party Make Up</option>
+                        <option value="hair">Hair Texturing & Styles</option>
+                        <option value="nails">Elite Nail Art</option>
+                        <option value="facials">Luxury Skin Glows</option>
+                      </select>
+                    </div>
+
+                    {/* Description */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        Transformation Details *
+                      </label>
+                      <textarea 
+                        required
+                        rows={4}
+                        placeholder="Describe the makeup brand, shade details, hair accessories, or specific client skin prep techniques."
+                        value={uploadDescription}
+                        onChange={(e) => setUploadDescription(e.target.value)}
+                        disabled={isUploading || uploadSuccess}
+                        className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all resize-none"
+                      />
+                    </div>
+
+                    {/* File Drop Area */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        Client Transformation Photo *
+                      </label>
+                      
+                      {!imagePreview ? (
+                        <div 
+                          onDragEnter={handleDrag}
+                          onDragOver={handleDrag}
+                          onDragLeave={handleDrag}
+                          onDrop={handleDrop}
+                          onClick={() => fileInputRef.current?.click()}
+                          className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
+                            isDragActive 
+                              ? 'border-brand-primary bg-brand-primary/5' 
+                              : 'border-neutral-800 hover:border-brand-primary/50 hover:bg-neutral-800/30'
+                          }`}
+                        >
+                          <input 
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                            accept="image/*"
+                            className="hidden"
+                            disabled={isUploading || uploadSuccess}
+                          />
+                          <Upload className="h-9 w-9 text-neutral-500 mx-auto mb-3" />
+                          <p className="text-xs font-bold text-neutral-300 font-sans">
+                            Drag & drop client image or <span className="text-brand-primary underline font-extrabold">browse file</span>
                           </p>
-                          <p className="text-[10px] text-neutral-500 font-sans mt-0.5 font-sans">
-                            {selectedFile ? `${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB` : ""}
+                          <p className="text-[10px] text-neutral-500 mt-1 font-sans">
+                            Supports PNG, JPG, JPEG, WEBP up to 8MB
                           </p>
                         </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={removeSelectedFile}
-                        disabled={isUploading || uploadSuccess}
-                        className="text-rose-400 hover:text-rose-500 hover:bg-rose-500/10 p-2 rounded-full transition-all disabled:opacity-40 cursor-pointer"
+                      ) : (
+                        <div className="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 p-2.5 flex items-center justify-between">
+                          <div className="flex items-center space-x-3.5">
+                            <img 
+                              src={imagePreview} 
+                              alt="Preview" 
+                              className="h-16 w-16 object-cover rounded-xl border border-neutral-800"
+                            />
+                            <div className="text-left max-w-[180px] truncate">
+                              <p className="text-xs font-bold text-neutral-200 font-sans truncate font-sans">
+                                {selectedFile?.name || "Uploaded Image"}
+                              </p>
+                              <p className="text-[10px] text-neutral-500 font-sans mt-0.5 font-sans">
+                                {selectedFile ? `${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB` : ""}
+                              </p>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={removeSelectedFile}
+                            disabled={isUploading || uploadSuccess}
+                            className="text-rose-400 hover:text-rose-500 hover:bg-rose-500/10 p-2 rounded-full transition-all disabled:opacity-40 cursor-pointer"
+                          >
+                            <Trash2 className="h-4.5 w-4.5" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Feedback Alerts */}
+                    {uploadError && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-start gap-2.5 bg-rose-500/10 text-rose-400 text-xs p-4 rounded-2xl border border-rose-500/20 font-sans"
                       >
-                        <Trash2 className="h-4.5 w-4.5" />
+                        <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5" />
+                        <p>{uploadError}</p>
+                      </motion.div>
+                    )}
+
+                    {uploadSuccess && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs p-4 rounded-2xl border border-emerald-500/20 font-sans"
+                      >
+                        <CheckCircle2 className="h-4.5 w-4.5 shrink-0" />
+                        <p className="font-bold">Look uploaded successfully!</p>
+                      </motion.div>
+                    )}
+
+                    {/* Submit Actions */}
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={isUploading || uploadSuccess || !selectedFile}
+                        className="w-full bg-brand-primary text-white py-3.5 rounded-2xl font-sans text-xs font-bold hover:bg-brand-primary/95 transition-all shadow-lg hover:shadow-brand-primary/10 flex items-center justify-center space-x-2 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed disabled:shadow-none cursor-pointer"
+                      >
+                        {isUploading ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin text-white" />
+                            <span>Publishing to Live Site...</span>
+                          </>
+                        ) : uploadSuccess ? (
+                          <span>Published ✨</span>
+                        ) : (
+                          <>
+                            <Upload className="h-4 w-4" />
+                            <span>Publish Look</span>
+                          </>
+                        )}
                       </button>
                     </div>
-                  )}
-                </div>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <h2 className="font-serif text-2xl font-bold text-white mb-1 flex items-center gap-2">
+                    <Sparkles className="h-5.5 w-5.5 text-brand-primary" />
+                    <span>Site Text Settings</span>
+                  </h2>
+                  <p className="text-xs text-neutral-400 mb-6 font-sans">
+                    Edit the main titles and descriptions displayed on your public salon website sections.
+                  </p>
 
-                {/* Feedback Alerts */}
-                {uploadError && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-start gap-2.5 bg-rose-500/10 text-rose-400 text-xs p-4 rounded-2xl border border-rose-500/20 font-sans"
-                  >
-                    <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5" />
-                    <p>{uploadError}</p>
-                  </motion.div>
-                )}
+                  <form onSubmit={handleUpdateTextConfig} className="space-y-5">
+                    {/* Hero Title */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        Hero Section Headline *
+                      </label>
+                      <input 
+                        type="text" 
+                        required
+                        value={heroTitleInput}
+                        onChange={(e) => setHeroTitleInput(e.target.value)}
+                        disabled={updatingTextConfig}
+                        placeholder="e.g. Best Bridal Makeup Studio Ujjain & Indore"
+                        className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all"
+                      />
+                    </div>
 
-                {uploadSuccess && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs p-4 rounded-2xl border border-emerald-500/20 font-sans"
-                  >
-                    <CheckCircle2 className="h-4.5 w-4.5 shrink-0" />
-                    <p className="font-bold">Look uploaded successfully!</p>
-                  </motion.div>
-                )}
+                    {/* About Story */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-neutral-300 uppercase tracking-widest mb-2 font-sans">
+                        About Story Text *
+                      </label>
+                      <textarea 
+                        required
+                        rows={8}
+                        value={aboutStoryInput}
+                        onChange={(e) => setAboutStoryInput(e.target.value)}
+                        disabled={updatingTextConfig}
+                        placeholder="Provide details about the salon story, achievements, and standard of care..."
+                        className="w-full bg-neutral-950/60 text-white border border-neutral-800 rounded-2xl px-4 py-3.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-primary font-sans transition-all resize-none leading-relaxed"
+                      />
+                    </div>
 
-                {/* Submit Actions */}
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={isUploading || uploadSuccess || !selectedFile}
-                    className="w-full bg-brand-primary text-white py-3.5 rounded-2xl font-sans text-xs font-bold hover:bg-brand-primary/95 transition-all shadow-lg hover:shadow-brand-primary/10 flex items-center justify-center space-x-2 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed disabled:shadow-none cursor-pointer"
-                  >
-                    {isUploading ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin text-white" />
-                        <span>Publishing to Live Site...</span>
-                      </>
-                    ) : uploadSuccess ? (
-                      <span>Published ✨</span>
-                    ) : (
-                      <>
-                        <Upload className="h-4 w-4" />
-                        <span>Publish Look</span>
-                      </>
+                    {/* Feedback Messages */}
+                    {textConfigError && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-start gap-2.5 bg-rose-500/10 text-rose-400 text-xs p-4 rounded-2xl border border-rose-500/20 font-sans"
+                      >
+                        <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5" />
+                        <p>{textConfigError}</p>
+                      </motion.div>
                     )}
-                  </button>
-                </div>
-              </form>
+
+                    {textConfigSuccess && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs p-4 rounded-2xl border border-emerald-500/20 font-sans"
+                      >
+                        <CheckCircle2 className="h-4.5 w-4.5 shrink-0" />
+                        <p className="font-bold">Settings updated successfully!</p>
+                      </motion.div>
+                    )}
+
+                    {/* Submit Buttons */}
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={updatingTextConfig}
+                        className="w-full bg-brand-primary text-white py-3.5 rounded-2xl font-sans text-xs font-bold hover:bg-brand-primary/95 transition-all shadow-lg hover:shadow-brand-primary/10 flex items-center justify-center space-x-2 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed disabled:shadow-none cursor-pointer"
+                      >
+                        {updatingTextConfig ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin text-white" />
+                            <span>Saving Settings...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Sparkles className="h-4 w-4" />
+                            <span>Save Settings</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
             </div>
 
             {/* RIGHT COLUMN: Manage Current Looks (List/Grid with delete options) */}

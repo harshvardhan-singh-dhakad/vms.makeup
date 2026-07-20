@@ -21,6 +21,11 @@ service cloud.firestore {
       allow read, write: if true;
     }
 
+    // Salon Config rule
+    match /salon_config/{docId} {
+      allow read, write: if true;
+    }
+
     // Admin Credentials rule
     match /admin_credentials/{docId} {
       allow read: if true;

@@ -3,7 +3,14 @@ import { SALON_INFO } from '../data';
 import { Award, Heart, CheckCircle2, ShieldCheck, Compass } from 'lucide-react';
 import aboutBride from '../assets/images/about_bride_main.jpg';
 
-export default function AboutAndStory() {
+interface AboutAndStoryProps {
+  salonInfo?: {
+    heroTitle: string;
+    aboutStory: string;
+  };
+}
+
+export default function AboutAndStory({ salonInfo }: AboutAndStoryProps) {
   const brandPillars = [
     {
       icon: <Award className="h-6 w-6 text-brand-gold" />,
@@ -65,7 +72,7 @@ export default function AboutAndStory() {
             </h2>
             
             <p className="font-sans text-xs sm:text-sm text-brand-text-muted leading-relaxed">
-              {SALON_INFO.aboutStory}
+              {salonInfo?.aboutStory || SALON_INFO.aboutStory}
             </p>
 
             {/* Core Features list */}
