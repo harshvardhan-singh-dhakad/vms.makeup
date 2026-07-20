@@ -186,9 +186,9 @@ export default function PortfolioGallery() {
           </p>
         </div>
 
-        {/* Filter Navigation & Upload Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 border-b border-brand-secondary/10 pb-6">
-          <div className="flex flex-wrap justify-center sm:justify-start gap-2">
+        {/* Filter Navigation */}
+        <div className="flex justify-center mb-10 border-b border-brand-secondary/10 pb-6">
+          <div className="flex flex-wrap justify-center gap-2">
             {filters.map((filter) => (
               <button
                 key={filter.id}
@@ -202,46 +202,6 @@ export default function PortfolioGallery() {
                 {filter.label}
               </button>
             ))}
-          </div>
-
-          <div className="flex items-center space-x-3">
-            {isAdmin ? (
-              <>
-                <div className="hidden sm:flex items-center space-x-1 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-sans text-[10px] font-bold uppercase tracking-wider">
-                  <Unlock className="h-3 w-3 text-emerald-500" />
-                  <span>Admin Mode Active</span>
-                </div>
-                
-                <button
-                  id="share-look-btn"
-                  onClick={() => (window as any).navigateToPath('/admin')}
-                  className="flex items-center space-x-2 bg-brand-purple text-brand-bg-primary px-5 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shadow-md hover:shadow-brand-purple/20 hover:scale-[1.02] active:scale-[0.98] shrink-0 cursor-pointer"
-                >
-                  <Plus className="h-4 w-4" />
-                  <span>Admin Console</span>
-                </button>
-
-                <button
-                  onClick={handleAdminLogout}
-                  className="flex items-center space-x-2 bg-brand-bg-primary text-red-600 hover:bg-red-50 border border-brand-secondary/15 px-4 py-2.5 rounded-full font-sans text-xs font-bold transition-all duration-300 shrink-0 cursor-pointer"
-                  title="Logout Admin"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Logout</span>
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => (window as any).navigateToPath('/admin')}
-                  className="flex items-center space-x-1.5 bg-brand-bg-primary text-brand-text-muted border border-brand-secondary/15 px-4 py-2.5 rounded-full font-sans text-xs font-semibold hover:text-brand-primary hover:border-brand-primary/30 transition-all duration-300 shrink-0 cursor-pointer"
-                  title="Admin Access Login"
-                >
-                  <Lock className="h-3.5 w-3.5 text-brand-purple/80" />
-                  <span>Admin Access</span>
-                </button>
-              </>
-            )}
           </div>
         </div>
 
